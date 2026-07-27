@@ -1,1 +1,120 @@
-<p>login works!</p>
+<div class="login-container">
+  <div class="login-card">
+    
+    <!-- Sección Izquierda: Marca e Ilustración -->
+    <div class="brand-section">
+      <div class="logo-container">
+        <div class="logo-wrapper">
+          <!-- Esfera / Iso tipo de CoreDigital -->
+          <div class="logo-sphere">
+            <div class="sphere-core"></div>
+          </div>
+          <div class="logo-text">
+            <span class="core">CORE</span>
+            <span class="digital">DIGITAL</span>
+            <span class="subtext">Soluciones que Innovan</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Eslogan Actualizado -->
+      <h2 class="slogan">Transformamos ideas en sistemas inteligentes</h2>
+
+      <!-- Ilustración de Laptop y Gráfica -->
+      <div class="dashboard-preview">
+        <div class="laptop-mockup">
+          <div class="screen">
+            <div class="window-controls">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="screen-content">
+              <div class="sidebar"></div>
+              <div class="main-panel">
+                <div class="card-bar"></div>
+                <div class="card-bar short"></div>
+              </div>
+            </div>
+          </div>
+          <div class="keyboard"></div>
+        </div>
+        <div class="floating-chart">
+          <svg viewBox="0 0 100 50" class="chart-svg">
+            <path d="M 10 40 L 35 25 L 60 32 L 90 10" fill="none" stroke="#fb8500" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="90" cy="10" r="4" fill="#fb8500"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección Derecha: Formulario de Iniciar Sesión -->
+    <div class="form-section">
+      <div class="form-header">
+        <h1>Iniciar Sesión</h1>
+        <p>Accede a tu cuenta</p>
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        
+        <!-- Campo Usuario -->
+        <div class="form-group">
+          <label for="username">Nombre de Usuario</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <input 
+              type="email" 
+              id="username" 
+              formControlName="username" 
+              placeholder="nombre@empresa.com"
+              [class.is-invalid]="isFieldInvalid('username')"
+            />
+          </div>
+          <span class="error-msg" *ngIf="isFieldInvalid('username')">
+            Ingrese un correo electrónico válido
+          </span>
+        </div>
+
+        <!-- Campo Contraseña -->
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <div class="input-wrapper">
+            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <input 
+              [type]="showPassword ? 'text' : 'password'" 
+              id="password" 
+              formControlName="password" 
+              placeholder="••••••••••••"
+              [class.is-invalid]="isFieldInvalid('password')"
+            />
+            <button type="button" class="toggle-password" (click)="togglePasswordVisibility()">
+              <svg *ngIf="!showPassword" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              <svg *ngIf="showPassword" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+            </button>
+          </div>
+          <span class="error-msg" *ngIf="isFieldInvalid('password')">
+            La contraseña es requerida
+          </span>
+        </div>
+
+        <!-- Botón con Degradado característico -->
+        <button type="submit" class="btn-submit" [disabled]="loginForm.invalid || isLoading">
+          <span>{{ isLoading ? 'Cargando...' : 'Iniciar Sesión' }}</span>
+        </button>
+
+        <!-- Enlaces Inferiores -->
+        <div class="form-footer">
+          <a routerLink="/forgot-password" class="link-forgot">¿Olvidó su contraseña?</a>
+          <a routerLink="/register" class="link-register">Registrarse</a>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
