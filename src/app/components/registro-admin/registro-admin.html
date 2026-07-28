@@ -1,0 +1,57 @@
+<p>registro-admin works!</p>
+<div class="contenedor-registro">
+  <h2>Registro de Administrador</h2>
+
+  <form [formGroup]="formulario" (ngSubmit)="enviar()" novalidate>
+    <div class="campo">
+      <label for="cedula">Cédula</label>
+      <input id="cedula" type="text" formControlName="cedula" maxlength="10" />
+      @if (f['cedula'].invalid && f['cedula'].touched) {
+        <span class="error">Cédula inválida (10 dígitos).</span>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="nombres_completos">Nombres completos</label>
+      <input id="nombres_completos" type="text" formControlName="nombres_completos" />
+      @if (f['nombres_completos'].invalid && f['nombres_completos'].touched) {
+        <span class="error">Ingresa el nombre completo.</span>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="rol">Rol</label>
+      <select id="rol" formControlName="rol">
+        <option value="admin">Admin</option>
+        <option value="superadmin">Superadmin</option>
+      </select>
+    </div>
+
+    <div class="campo">
+      <label for="correo">Correo</label>
+      <input id="correo" type="email" formControlName="correo" />
+      @if (f['correo'].invalid && f['correo'].touched) {
+        <span class="error">Correo inválido.</span>
+      }
+    </div>
+
+    <div class="campo">
+      <label for="contraseña">Contraseña</label>
+      <input id="contraseña" type="password" formControlName="contraseña" />
+      @if (f['contraseña'].invalid && f['contraseña'].touched) {
+        <span class="error">Mínimo 8 caracteres.</span>
+      }
+    </div>
+
+    @if (errorGeneral) {
+      <p class="error general">{{ errorGeneral }}</p>
+    }
+    @if (mensajeExito) {
+      <p class="exito">{{ mensajeExito }}</p>
+    }
+
+    <button type="submit" [disabled]="cargando">
+      {{ cargando ? 'Registrando...' : 'Registrar administrador' }}
+    </button>
+  </form>
+</div>

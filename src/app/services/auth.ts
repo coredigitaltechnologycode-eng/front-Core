@@ -1,0 +1,38 @@
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+
+@Injectable({ providedIn: 'root' })
+export class AuthService {
+  constructor(private router: Router) {}
+
+  guardarSesion(token: string, rol: string, nombresCompletos: string): void {
+    localStorage.setItem('token', token);
+    localStorage.setItem('rol', rol);
+    localStorage.setItem('nombres_completos', nombresCompletos);
+  }
+
+  redirigirSegunRol(): void {
+    const rol = localStorage.getItem('rol');
+
+    if (rol === 'admin') {
+      this.router.navigate(['/home-admin']);
+    } else {
+      this.router.navigate(['/login']);
+    }
+  }
+
+  obtenerToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
+  estaAutenticado(): boolean {
+    return !!this.obtenerToken();
+  }
+
+  cerrarSesion(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('rol');
+    localStorage.removeItem('nombres_completos');
+    this.router.navigate(['/login']);
+  }
+}

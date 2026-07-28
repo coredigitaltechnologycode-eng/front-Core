@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { LoginComponent } from '../../components/login/login';
+import { LoginComponent } from "../../components/login/login";
+import { RegistroAdmin } from '../../components/registro-admin/registro-admin';
+
 
 @Component({
-  selector: 'app-home',
-  imports: [LoginComponent],
+  imports: [RegistroAdmin, LoginComponent],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
