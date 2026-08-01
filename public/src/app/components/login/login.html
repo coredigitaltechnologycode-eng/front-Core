@@ -1,0 +1,377 @@
+<!-- =====================================================
+     CONTENEDOR PRINCIPAL DEL LOGIN
+     Aquí se encuentra toda la pantalla de inicio de sesión
+===================================================== -->
+<div class="login-container">
+
+
+  <!-- =====================================================
+       TARJETA PRINCIPAL DEL LOGIN
+       Contiene las dos partes:
+       1. Marca / Logo / Imagen
+       2. Formulario de acceso
+  ====================================================== -->
+  <div class="login-card">
+
+
+    <!-- =====================================================
+         SECCIÓN IZQUIERDA - IDENTIDAD DE LA EMPRESA
+         Aquí se muestra el logo, slogan e imagen decorativa
+    ====================================================== -->
+    <div class="brand-section">
+
+
+      <!-- Contenedor general del logo -->
+      <div class="logo-container">
+
+
+        <!-- Contenedor específico para controlar tamaño y estilo del logo -->
+        <div class="Logo-Core-img">
+
+
+          <!-- Logo principal de Core Digital ubicado en assets/img -->
+          <img src="assets/img/logo_sin _fondo.png" alt="Core Digital" class="Logo">
+
+        </div>
+
+      </div>
+
+
+      <!-- Slogan o frase principal de la empresa -->
+      <h2 class="slogan1">
+        Transformamos ideas en sistemas inteligentes
+      </h2>
+
+
+      <!-- Imagen decorativa debajo del logo -->
+      <!-- Representa la parte visual del sistema -->
+      <img src="assets/img/pc_bajo_logo.png" alt="pc_bajo_logo" class="pc">
+
+
+    </div>
+
+
+
+
+
+    <!-- =====================================================
+         SECCIÓN DERECHA - FORMULARIO DE LOGIN
+         Aquí el usuario ingresa sus credenciales
+    ====================================================== -->
+    <div class="form-section">
+
+
+      <!-- Encabezado del formulario -->
+      <!-- Contiene título y descripción -->
+      <div class="form-header">
+
+        <h1>
+          Iniciar Sesión
+        </h1>
+
+        <p>
+          Accede a tu cuenta
+        </p>
+
+      </div>
+
+
+
+
+
+      <!-- =====================================================
+           FORMULARIO ANGULAR
+           [formGroup] conecta con el formulario del TypeScript
+           (ngSubmit) ejecuta la función del login
+      ====================================================== -->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+
+
+
+
+
+        <!-- =====================================================
+             CAMPO USUARIO / CORREO
+             Permite ingresar el email del usuario
+        ====================================================== -->
+        <div class="form-group">
+
+
+          <!-- Nombre del campo -->
+          <label for="username">
+            Nombre de Usuario
+          </label>
+
+
+
+          <!-- Contenedor del input + icono -->
+          <div class="input-wrapper">
+
+
+            <!-- Icono de usuario -->
+            <svg class="input-icon">
+              ...
+            </svg>
+
+
+
+            <!-- Input del correo -->
+            <input type="email" id="username" formControlName="username" placeholder="nombre@empresa.com"
+              [class.is-invalid]="isFieldInvalid('username')" />
+
+          </div>
+
+
+
+          <!-- Mensaje cuando el correo es incorrecto -->
+          <span class="error-msg" *ngIf="isFieldInvalid('username')">
+
+            Ingrese un correo electrónico válido
+
+          </span>
+
+
+        </div>
+
+
+
+
+
+
+        <!-- =====================================================
+             CAMPO CONTRASEÑA
+             Permite ingresar la clave del usuario
+        ====================================================== -->
+        <div class="form-group">
+
+
+          <label for="password">
+            Contraseña
+          </label>
+
+
+
+          <!-- Contenedor del input + iconos -->
+          <div class="input-wrapper">
+
+
+            <!-- Icono de candado -->
+            <svg class="input-icon">
+              ...
+            </svg>
+
+
+
+            <!-- Campo contraseña -->
+            <!-- Cambia entre texto y password -->
+            <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password"
+              placeholder="••••••••••••" [class.is-invalid]="isFieldInvalid('password')" />
+
+
+
+
+            <!-- Botón mostrar / ocultar contraseña -->
+            <button type="button" class="toggle-password" (click)="togglePasswordVisibility()">
+
+
+              <!-- Ojo abierto -->
+              <!-- Se muestra cuando la contraseña está oculta -->
+
+
+              <!-- Ojo cerrado -->
+              <!-- Se muestra cuando la contraseña es visible -->
+
+
+            </button>
+
+
+
+          </div>
+
+
+
+          <!-- Mensaje de error contraseña -->
+          <span class="error-msg" *ngIf="isFieldInvalid('password')">
+
+            La contraseña es requerida
+
+          </span>
+
+
+        </div>
+
+
+
+
+
+
+
+        <!-- =====================================================
+             BOTÓN DE INICIO DE SESIÓN
+             Envía los datos del formulario
+        ====================================================== -->
+        <button type="submit" class="btn-submit">
+
+
+          <!-- Texto del botón -->
+          <span class="btn-text">
+
+            Iniciar Sesión
+
+          </span>
+
+
+
+
+          <!-- Animación de pixeles del botón -->
+          <!-- Se usa para efecto visual -->
+          <div class="pixels">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+          </div>
+
+
+        </button>
+
+
+
+
+
+
+        <!-- =====================================================
+             PIE DEL FORMULARIO
+             Enlaces secundarios
+        ====================================================== -->
+        <div class="form-footer">
+
+
+          <!-- Recuperación de contraseña -->
+          <a routerLink="/forgot-password" class="link-forgot">
+
+            ¿Olvidó su contraseña?
+
+          </a>
+
+
+
+
+          <!-- Registro de nuevos usuarios -->
+          <a routerLink="/register" class="link-register">
+
+            Registrarse
+
+          </a>
+
+
+        </div>
+
+
+
+      </form>
+
+
+    </div>
+
+
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- =====================================================
+     MODAL DE RESULTADO DEL LOGIN
+     Ventana emergente para mostrar:
+     - Login correcto
+     - Error de acceso
+===================================================== -->
+
+<div class="modal-overlay" *ngIf="mostrarModal" (click)="cerrarModal()">
+
+
+
+  <!-- Caja interna del mensaje -->
+  <div class="modal-box" [class.modal-exito]="modalExito" [class.modal-error]="!modalExito"
+    (click)="$event.stopPropagation()">
+
+
+
+
+
+    <!-- Icono del resultado -->
+    <div class="modal-icon">
+
+
+      <!-- Icono cuando el login es exitoso -->
+      <svg *ngIf="modalExito">
+        ...
+      </svg>
+
+
+
+      <!-- Icono cuando ocurre un error -->
+      <svg *ngIf="!modalExito">
+        ...
+      </svg>
+
+
+    </div>
+
+
+
+
+
+    <!-- Título dinámico -->
+    <!-- Cambia según éxito o error -->
+    <h3 class="modal-titulo">
+
+      {{ modalExito ? '¡Login exitoso!' : 'Error al iniciar sesión' }}
+
+    </h3>
+
+
+
+
+
+    <!-- Mensaje enviado desde TypeScript -->
+    <p class="modal-mensaje">
+
+      {{ modalMensaje }}
+
+    </p>
+
+
+
+
+
+    <!-- Botón cerrar modal -->
+    <button type="button" class="modal-btn" (click)="cerrarModal()">
+
+      Aceptar
+
+    </button>
+
+
+
+
+  </div>
+
+
+</div>
