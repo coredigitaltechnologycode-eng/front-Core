@@ -1,17 +1,9 @@
 import { CanActivateFn } from '@angular/router';
-import { inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 export const authGuardGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
-  const platformId = inject(PLATFORM_ID);
-
-  // En el servidor (SSR) no existe localStorage. En ese caso dejamos pasar
-  // la renderización inicial; la verificación real ocurre en el navegador.
-  if (!isPlatformBrowser(platformId)) {
-    return true;
-  }
 
   const token = localStorage.getItem('token');
   const rol = localStorage.getItem('rol');
