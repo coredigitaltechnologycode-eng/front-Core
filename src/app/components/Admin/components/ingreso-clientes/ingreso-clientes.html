@@ -1,181 +1,381 @@
 <div class="cliente-page">
   <div class="cliente-card">
-    <div class="cliente-header">
-      <h1>Módulo de Ingreso de Clientes</h1>
-      <p>Registra un nuevo cliente y su plan contratado.</p>
-    </div>
 
-    <form [formGroup]="formulario" (ngSubmit)="enviar()" class="cliente-form">
-
-      <!-- Datos personales -->
-      <fieldset class="fieldset">
-        <legend>Datos personales del cliente</legend>
-
-        <div class="grid-2">
-          <div class="form-group">
-            <label for="cedula">Cédula</label>
-            <input
-              id="cedula"
-              type="text"
-              inputmode="numeric"
-              formControlName="cedula"
-              placeholder="ej. 1712345678"
-              maxlength="10"
-              (input)="soloNumeros($event, 'cedula', 10)"
-              [class.is-invalid]="campoInvalido('cedula')"
-            />
-            <span class="error-msg" *ngIf="campoInvalido('cedula')">
-              La cédula debe tener exactamente 10 dígitos.
-            </span>
-          </div>
-
-          <div class="form-group">
-            <label for="telefono">Teléfono</label>
-            <input
-              id="telefono"
-              type="text"
-              inputmode="numeric"
-              formControlName="telefono"
-              placeholder="ej. 0991234567"
-              maxlength="10"
-              (input)="soloNumeros($event, 'telefono', 10)"
-              [class.is-invalid]="campoInvalido('telefono')"
-            />
-            <span class="error-msg" *ngIf="campoInvalido('telefono')">
-              El teléfono debe tener exactamente 10 dígitos.
-            </span>
-          </div>
+    <!-- PANEL IZQUIERDO -->
+    <section class="brand-section" aria-label="Core Digital">
+      <div class="logo-wrapper">
+        <div class="logo-sphere" aria-hidden="true">
+          <div class="sphere-core"></div>
         </div>
 
-        <div class="form-group">
-          <label for="nombres_completos">Nombres completos</label>
-          <input
-            id="nombres_completos"
-            type="text"
-            formControlName="nombres_completos"
-            placeholder="ej. Juan Gabriel García López"
-            [class.is-invalid]="campoInvalido('nombres_completos')"
-          />
-          <span class="error-msg" *ngIf="campoInvalido('nombres_completos')">
-            Ingresa al menos 3 caracteres.
+        <div class="logo-text">
+          <span class="core">
+            CORE
+          </span>
+
+          <span class="digital">
+            DIGITAL
+          </span>
+
+          <span class="subtext">
+            Soluciones que Innovan
           </span>
         </div>
+      </div>
 
-        <div class="form-group">
-          <label for="direccion">Dirección</label>
-          <input
-            id="direccion"
-            type="text"
-            formControlName="direccion"
-            placeholder="ej. Av. 12 de Octubre N24-11 y Fco. de Orellana, Quito"
-            [class.is-invalid]="campoInvalido('direccion')"
-          />
-          <span class="error-msg" *ngIf="campoInvalido('direccion')">
-            Ingresa una dirección válida (mínimo 5 caracteres).
-          </span>
-        </div>
-
-        <div class="form-group">
-          <label for="correo">Correo electrónico</label>
-          <input
-            id="correo"
-            type="email"
-            formControlName="correo"
-            placeholder="ej. cliente@correo.com"
-            [class.is-invalid]="campoInvalido('correo')"
-          />
-          <span class="error-msg" *ngIf="campoInvalido('correo')">
-            Ingresa un correo electrónico válido.
-          </span>
-        </div>
-      </fieldset>
-
-      <!-- Cuenta de usuario -->
-      <fieldset class="fieldset">
-        <legend>Cuenta de usuario</legend>
-
-        <div class="grid-2">
-          <div class="form-group">
-            <label for="usuario_creado">Usuario</label>
-            <input
-              id="usuario_creado"
-              type="text"
-              formControlName="usuario_creado"
-              placeholder="ej. jgarcia"
-              [class.is-invalid]="campoInvalido('usuario_creado')"
-            />
-            <span class="error-msg" *ngIf="campoInvalido('usuario_creado')">
-              El usuario debe tener al menos 4 caracteres.
-            </span>
-          </div>
-
-          <div class="form-group">
-            <label for="contraseña_creada">Contraseña</label>
-            <div class="input-wrapper">
-              <input
-                id="contraseña_creada"
-                [type]="mostrarPassword ? 'text' : 'password'"
-                formControlName="contraseña_creada"
-                placeholder="••••••••"
-                [class.is-invalid]="campoInvalido('contraseña_creada')"
-              />
-              <button type="button" class="toggle-password" (click)="togglePasswordVisibility()">
-                {{ mostrarPassword ? 'Ocultar' : 'Ver' }}
-              </button>
-            </div>
-            <span class="error-msg" *ngIf="campoInvalido('contraseña_creada')">
-              Mínimo 8 caracteres, con mayúscula, minúscula, número y carácter especial.
-            </span>
-          </div>
-        </div>
-      </fieldset>
-
-      <!-- Plan -->
-      <fieldset class="fieldset">
-        <legend>Plan mensual</legend>
-
-        <div class="planes-grid">
-          <label
-            *ngFor="let plan of planes"
-            class="plan-option"
-            [class.plan-selected]="formulario.value.plan_seleccionado === plan.valor"
-          >
-            <input
-              type="radio"
-              name="plan_seleccionado"
-              [value]="plan.valor"
-              formControlName="plan_seleccionado"
-            />
-            {{ plan.etiqueta }}
-          </label>
-        </div>
-        <span class="error-msg" *ngIf="campoInvalido('plan_seleccionado')">
-          Selecciona un plan.
+      <div class="brand-copy">
+        <span class="eyebrow">
+          Gestión comercial
         </span>
-      </fieldset>
 
-      <button type="submit" class="btn-submit" [disabled]="cargando">
-        {{ cargando ? 'Guardando...' : 'Guardar Registro' }}
-      </button>
-    </form>
+        <h1>
+          Registra nuevos clientes y administra sus planes
+        </h1>
+
+        <p>
+          Centraliza la información del cliente,
+          crea sus credenciales de acceso y asigna
+          el plan adecuado para su negocio.
+        </p>
+      </div>
+
+      <div class="client-preview" aria-hidden="true">
+        <div class="preview-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+
+            <circle cx="12" cy="7" r="4"></circle>
+
+            <path d="M19 8v6M16 11h6"></path>
+          </svg>
+        </div>
+
+        <div class="preview-content">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL DERECHO -->
+    <section class="form-section">
+      <div class="cliente-header">
+        <span class="form-kicker">
+          Clientes
+        </span>
+
+        <h2>
+          Ingreso de clientes
+        </h2>
+
+        <p>
+          Completa la información para crear
+          un nuevo registro.
+        </p>
+      </div>
+
+      <form [formGroup]="formulario" (ngSubmit)="enviar()" class="cliente-form" novalidate>
+        <!-- DATOS PERSONALES -->
+        <fieldset class="fieldset">
+          <legend>
+            <span class="legend-icon">
+              1
+            </span>
+
+            Datos personales
+          </legend>
+
+          <div class="grid-2">
+            <!-- CÉDULA -->
+            <div class="form-group">
+              <label for="cedula">
+                Cédula
+              </label>
+
+              <div class="input-wrapper" [class.is-invalid]="campoInvalido('cedula')">
+                <svg class="input-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+
+                  <path d="M7 9h4M7 13h3M15 10h2M15 14h2"></path>
+                </svg>
+
+                <input id="cedula" type="text" inputmode="numeric" autocomplete="off" formControlName="cedula"
+                  placeholder="1712345678" maxlength="10" (keypress)="permitirSoloNumeros($event)"
+                  (input)="soloNumeros($event, 'cedula', 10)" />
+              </div>
+
+              <span class="error-msg" *ngIf="campoInvalido('cedula')">
+                La cédula debe tener exactamente
+                10 dígitos.
+              </span>
+            </div>
+
+            <!-- TELÉFONO -->
+            <div class="form-group">
+              <label for="telefono">
+                Teléfono
+              </label>
+
+              <div class="input-wrapper" [class.is-invalid]="campoInvalido('telefono')">
+                <svg class="input-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z">
+                  </path>
+                </svg>
+
+                <input id="telefono" type="text" inputmode="numeric" autocomplete="tel" formControlName="telefono"
+                  placeholder="0991234567" maxlength="10" (keypress)="permitirSoloNumeros($event)"
+                  (input)="soloNumeros($event, 'telefono', 10)" />
+              </div>
+
+              <span class="error-msg" *ngIf="campoInvalido('telefono')">
+                El teléfono debe tener exactamente
+                10 dígitos.
+              </span>
+            </div>
+          </div>
+
+          <!-- NOMBRES -->
+          <div class="form-group">
+            <label for="nombres_completos">
+              Nombres completos
+            </label>
+
+            <div class="input-wrapper" [class.is-invalid]="campoInvalido('nombres_completos')">
+              <svg class="input-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+
+              <input id="nombres_completos" type="text" autocomplete="name" formControlName="nombres_completos"
+                placeholder="Juan Gabriel García López" />
+            </div>
+
+            <span class="error-msg" *ngIf="campoInvalido('nombres_completos')">
+              Ingresa al menos 3 caracteres.
+            </span>
+          </div>
+
+          <!-- DIRECCIÓN -->
+          <div class="form-group">
+            <label for="direccion">
+              Dirección
+            </label>
+
+            <div class="input-wrapper" [class.is-invalid]="campoInvalido('direccion')">
+              <svg class="input-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0Z"></path>
+
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+
+              <input id="direccion" type="text" autocomplete="street-address" formControlName="direccion"
+                placeholder="Av. 12 de Octubre y Fco. de Orellana" />
+            </div>
+
+            <span class="error-msg" *ngIf="campoInvalido('direccion')">
+              Ingresa una dirección válida,
+              con un mínimo de 5 caracteres.
+            </span>
+          </div>
+
+          <!-- CORREO -->
+          <div class="form-group">
+            <label for="correo">
+              Correo electrónico
+            </label>
+
+            <div class="input-wrapper" [class.is-invalid]="campoInvalido('correo')">
+              <svg class="input-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+
+                <path d="m3 7 9 6 9-6"></path>
+              </svg>
+
+              <input id="correo" type="email" autocomplete="email" formControlName="correo"
+                placeholder="cliente@correo.com" />
+            </div>
+
+            <span class="error-msg" *ngIf="campoInvalido('correo')">
+              Ingresa un correo electrónico válido.
+            </span>
+          </div>
+        </fieldset>
+
+        <!-- CUENTA -->
+        <fieldset class="fieldset">
+          <legend>
+            <span class="legend-icon">
+              2
+            </span>
+
+            Cuenta de usuario
+          </legend>
+
+          <div class="grid-2">
+            <!-- USUARIO -->
+            <div class="form-group">
+              <label for="usuario_creado">
+                Usuario
+              </label>
+
+              <div class="input-wrapper" [class.is-invalid]="campoInvalido('usuario_creado')">
+                <svg class="input-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+
+                <input id="usuario_creado" type="text" autocomplete="username" formControlName="usuario_creado"
+                  placeholder="jgarcia" />
+              </div>
+
+              <span class="error-msg" *ngIf="campoInvalido('usuario_creado')">
+                El usuario debe tener al menos
+                4 caracteres.
+              </span>
+            </div>
+
+            <!-- CONTRASEÑA -->
+            <div class="form-group">
+              <label for="contraseña_creada">
+                Contraseña
+              </label>
+
+              <div class="input-wrapper" [class.is-invalid]="campoInvalido('contraseña_creada')">
+                <svg class="input-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+
+                <input id="contraseña_creada" [type]="mostrarPassword ? 'text' : 'password'" autocomplete="new-password"
+                  formControlName="contraseña_creada" placeholder="Crea una contraseña segura" />
+
+                <button type="button" class="toggle-password" (click)="togglePasswordVisibility()" [attr.aria-label]="
+                    mostrarPassword
+                      ? 'Ocultar contraseña'
+                      : 'Mostrar contraseña'
+                  ">
+                  <svg *ngIf="!mostrarPassword" viewBox="0 0 24 24">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8z"></path>
+
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+
+                  <svg *ngIf="mostrarPassword" viewBox="0 0 24 24">
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"></path>
+
+                    <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"></path>
+
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                  </svg>
+                </button>
+              </div>
+
+              <div class="password-rules" aria-live="polite">
+                <span *ngFor="let requisito of requisitosPassword" [class.rule-ok]="requisito.cumplido">
+                  <svg viewBox="0 0 20 20" aria-hidden="true">
+                    <path *ngIf="requisito.cumplido" d="m5 10 3 3 7-7"></path>
+
+                    <circle *ngIf="!requisito.cumplido" cx="10" cy="10" r="6"></circle>
+                  </svg>
+
+                  {{ requisito.texto }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- PLAN -->
+        <fieldset class="fieldset">
+          <legend>
+            <span class="legend-icon">
+              3
+            </span>
+
+            Plan mensual
+          </legend>
+
+          <div class="planes-grid">
+            <label *ngFor="let plan of planes" class="plan-option" [class.plan-selected]="
+                formulario.value.plan_seleccionado === plan.valor
+              ">
+              <input type="radio" name="plan_seleccionado" [value]="plan.valor" formControlName="plan_seleccionado" />
+
+              <span class="plan-radio"></span>
+
+              <span class="plan-copy">
+                <strong>
+                  {{ plan.etiqueta }}
+                </strong>
+
+                <small>
+                  {{ plan.descripcion }}
+                </small>
+              </span>
+            </label>
+          </div>
+
+          <span class="error-msg plan-error" *ngIf="campoInvalido('plan_seleccionado')">
+            Selecciona un plan.
+          </span>
+        </fieldset>
+
+        <!-- BOTÓN -->
+        <button type="submit" class="btn-submit" [disabled]="cargando">
+          <span *ngIf="cargando" class="spinner" aria-hidden="true"></span>
+
+          {{
+          cargando
+          ? 'Guardando...'
+          : 'Guardar registro'
+          }}
+        </button>
+      </form>
+    </section>
   </div>
 </div>
 
-<!-- Modal de retroalimentación -->
+<!-- MODAL -->
 <div class="modal-overlay" *ngIf="mostrarModal" (click)="cerrarModal()">
-  <div
-    class="modal-box"
-    [class.modal-exito]="modalExito"
-    [class.modal-error]="!modalExito"
-    (click)="$event.stopPropagation()"
-  >
-    <h3 class="modal-titulo">{{ modalTitulo }}</h3>
-    <p class="modal-mensaje">{{ modalMensaje }}</p>
+  <div class="modal-box" [class.modal-exito]="modalExito" [class.modal-error]="!modalExito" role="dialog"
+    aria-modal="true" aria-labelledby="modal-titulo" (click)="$event.stopPropagation()">
+    <div class="modal-icon">
+      <svg *ngIf="modalExito" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10"></circle>
+
+        <path d="m8 12 3 3 5-6"></path>
+      </svg>
+
+      <svg *ngIf="!modalExito" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10"></circle>
+
+        <path d="M12 7v6"></path>
+
+        <circle cx="12" cy="17" r=".5"></circle>
+      </svg>
+    </div>
+
+    <h3 id="modal-titulo" class="modal-titulo">
+      {{ modalTitulo }}
+    </h3>
+
+    <p class="modal-mensaje">
+      {{ modalMensaje }}
+    </p>
 
     <ul class="modal-detalles" *ngIf="modalDetalles.length > 0">
-      <li *ngFor="let detalle of modalDetalles">{{ detalle }}</li>
+      <li *ngFor="let detalle of modalDetalles">
+        {{ detalle }}
+      </li>
     </ul>
 
-    <button type="button" class="modal-btn" (click)="cerrarModal()">Aceptar</button>
+    <button type="button" class="modal-btn" (click)="cerrarModal()">
+      Aceptar
+    </button>
   </div>
 </div>
