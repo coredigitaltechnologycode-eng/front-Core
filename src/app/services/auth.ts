@@ -16,6 +16,8 @@ export class AuthService {
 
     if (rol === 'admin') {
       this.router.navigate(['/home-admin']);
+    } else if (rol === 'cliente') {
+      this.router.navigate(['/home-cliente']);
     } else {
       this.router.navigate(['/login']);
     }

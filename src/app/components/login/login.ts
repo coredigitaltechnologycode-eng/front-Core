@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
 import { CoreAdmin, LoginAdminPayload, LoginAdminResponse } from '../../services/core-admin';
+import { CoreCliente, LoginClientePayload, LoginClienteResponse } from '../../services/core-cliente';
 import { AuthService } from '../../services/auth';
 
 @Component({
@@ -26,8 +27,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private coreAdmin: CoreAdmin,
+    private coreCliente: CoreCliente,
     private authService: AuthService,
-    private cdr: ChangeDetectorRef // 👈 clave para forzar el repintado
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -35,8 +37,9 @@ export class LoginComponent implements OnInit {
   }
 
   private initForm(): void {
+    // Ya no forzamos formato email: puede ser correo (admin/cliente) o usuario_creado (cliente)
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
@@ -51,7 +54,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // 👇 evita doble envío si ya hay una petición en curso
     if (this.isLoading) return;
 
     if (this.loginForm.invalid) {
@@ -61,42 +63,52 @@ export class LoginComponent implements OnInit {
 
     this.isLoading = true;
 
-    const credentials: LoginAdminPayload = {
-      correo: this.loginForm.value.username,
-      contraseña: this.loginForm.value.password,
-    };
+    const identificador: string = this.loginForm.value.username;
+    const contraseña: string = this.loginForm.value.password;
 
-    this.coreAdmin.loginAdmin(credentials).subscribe({
-      next: (respuesta: LoginAdminResponse) => {
-        this.isLoading = false;
+    // 1. Se intenta primero como administrador
+    const credencialesAdmin: LoginAdminPayload = { correo: identificador, contraseña };
 
-        this.authService.guardarSesion(
-          respuesta.token,
-          respuesta.rol,
-          respuesta.nombres_completos
-        );
+    this.coreAdmin.loginAdmin(credencialesAdmin).subscribe({
+      next: (respuesta: LoginAdminResponse) => this.manejarLoginExitoso(respuesta.token, respuesta.rol, respuesta.nombres_completos),
+      error: (errorAdmin: HttpErrorResponse) => {
+        // 2. Si no es admin (401), se intenta como cliente
+        if (errorAdmin.status === 401) {
+          const credencialesCliente: LoginClientePayload = { identificador, contraseña };
 
-        this.modalExito = true;
-        this.modalMensaje = `Login exitoso. Bienvenido ${respuesta.nombres_completos}`;
-        this.mostrarModal = true;
-
-        // 👇 fuerza el repintado inmediato en el mismo ciclo
-        this.cdr.detectChanges();
-
-        setTimeout(() => {
-          this.authService.redirigirSegunRol();
-        }, 1500);
-      },
-      error: (error: HttpErrorResponse) => {
-        this.isLoading = false;
-        this.modalExito = false;
-        this.modalMensaje = this.obtenerMensajeError(error);
-        this.mostrarModal = true;
-
-        // 👇 mismo forzado aquí
-        this.cdr.detectChanges();
+          this.coreCliente.loginCliente(credencialesCliente).subscribe({
+            next: (respuesta: LoginClienteResponse) => this.manejarLoginExitoso(respuesta.token, respuesta.rol, respuesta.nombres_completos),
+            error: (errorCliente: HttpErrorResponse) => this.manejarLoginFallido(errorCliente),
+          });
+        } else {
+          this.manejarLoginFallido(errorAdmin);
+        }
       },
     });
+  }
+
+  private manejarLoginExitoso(token: string, rol: string, nombresCompletos: string): void {
+    this.isLoading = false;
+
+    this.authService.guardarSesion(token, rol, nombresCompletos);
+
+    this.modalExito = true;
+    this.modalMensaje = `Login exitoso. Bienvenido ${nombresCompletos}`;
+    this.mostrarModal = true;
+
+    this.cdr.detectChanges();
+
+    setTimeout(() => {
+      this.authService.redirigirSegunRol();
+    }, 1500);
+  }
+
+  private manejarLoginFallido(error: HttpErrorResponse): void {
+    this.isLoading = false;
+    this.modalExito = false;
+    this.modalMensaje = this.obtenerMensajeError(error);
+    this.mostrarModal = true;
+    this.cdr.detectChanges();
   }
 
   cerrarModal(): void {

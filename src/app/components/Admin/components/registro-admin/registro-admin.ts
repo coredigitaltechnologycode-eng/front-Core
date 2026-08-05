@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
 import {
   CoreAdmin,
   RegistroAdminPayload,
-} from '../../services/core-admin';
+} from '../../../../services/core-admin';
 
 @Component({
   selector: 'app-registro-admin',
