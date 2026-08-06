@@ -1,1 +1,66 @@
-<p>ingreso-vendedor works!</p>
+<div class="ingreso-vendedor">
+  <h2>Ingreso de Vendedor - Colaborador</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <label>
+      Cédula del cliente dueño
+      <input type="text" formControlName="cedula_cliente" placeholder="ej. 1718856915" maxlength="10" />
+    </label>
+
+    <label>
+      Cédula
+      <input type="text" formControlName="cedula" placeholder="ej. 1712345678" maxlength="10" />
+    </label>
+
+    <label>
+      Nombres completos
+      <input type="text" formControlName="nombres_completos" placeholder="ej. Juan Gabriel García López" />
+    </label>
+
+    <label>
+      Fecha de ingreso
+      <input type="date" formControlName="fecha_ingreso" />
+    </label>
+
+    <label>
+      Tipo de Contrato
+      <select formControlName="tipo_contrato">
+        <option value="" disabled selected>Selecciona una opción</option>
+        <option value="tiempo_indefinido">Tiempo Indefinido</option>
+        <option value="plazo_fijo">Plazo Fijo</option>
+        <option value="temporal">Temporal</option>
+        <option value="practicas">Prácticas</option>
+      </select>
+    </label>
+
+    <label>
+      Fecha de nacimiento
+      <input type="date" formControlName="fecha_nacimiento" />
+    </label>
+
+    <label>
+      Salario (USD)
+      <input type="number" formControlName="salario" step="0.01" min="0" placeholder="ej. 1200.00" />
+    </label>
+
+    <label>
+      Usuario
+      <input type="text" formControlName="usuario_creado" placeholder="ej. jgarcia123" />
+    </label>
+
+    <label>
+      Contraseña
+      <input type="password" formControlName="contraseña_creada" />
+    </label>
+
+    <button type="submit" [disabled]="isLoading">
+      {{ isLoading ? 'Guardando...' : 'Guardar Registro' }}
+    </button>
+
+    @if (mensaje) {
+      <p [class.error]="huboError" [class.exito]="!huboError">{{ mensaje }}</p>
+    }
+
+  </form>
+</div>

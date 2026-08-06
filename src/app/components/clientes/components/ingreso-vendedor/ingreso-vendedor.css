@@ -1,0 +1,37 @@
+.ingreso-vendedor {
+  max-width: 480px;
+  margin: 2rem auto;
+}
+
+.ingreso-vendedor form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ingreso-vendedor label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.ingreso-vendedor input,
+.ingreso-vendedor select {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.ingreso-vendedor button {
+  margin-top: 0.5rem;
+  padding: 0.6rem;
+  cursor: pointer;
+}
+
+.ingreso-vendedor .exito {
+  color: green;
+}
+
+.ingreso-vendedor .error {
+  color: crimson;
+}
