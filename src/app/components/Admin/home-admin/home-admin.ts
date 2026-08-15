@@ -20,4 +20,8 @@ export class HomeAdmin {
     this.router.navigate(['/registro-clientes'])
   }
 
+  irAIngresoVendedor(): void {
+    this.router.navigate(['/ingreso-vendedor'])
+  }
+
 }
