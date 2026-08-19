@@ -12,6 +12,7 @@ export interface RegistroClientePayload {
   usuario_creado: string;
   contraseña_creada: string;
   plan_seleccionado: string;
+  
 }
 
 // Respuesta esperada del backend (según clientes_nodos.py -> crear_cliente)
@@ -31,6 +32,7 @@ export interface LoginClienteResponse {
   mensaje: string;
   token: string;
   rol: string;
+  cedula: string; 
   nombres_completos: string;
   plan_seleccionado: string;
 }

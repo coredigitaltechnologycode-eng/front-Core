@@ -7,8 +7,6 @@ export const authGuardGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
   const platformId = inject(PLATFORM_ID);
 
-  // En el servidor (SSR) no existe localStorage. En ese caso dejamos pasar
-  // la renderización inicial; la verificación real ocurre en el navegador.
   if (!isPlatformBrowser(platformId)) {
     return true;
   }
@@ -16,12 +14,13 @@ export const authGuardGuard: CanActivateFn = (route, state) => {
   const token = localStorage.getItem('token');
   const rol = localStorage.getItem('rol');
 
-  // Deja pasar solo si hay token y el rol es "admin"
-  if (token && rol === 'admin') {
+  // Roles permitidos para esta ruta específica (definidos en app.routes.ts)
+  const rolesPermitidos: string[] = route.data?.['rolesPermitidos'] ?? ['admin'];
+
+  if (token && rol && rolesPermitidos.includes(rol)) {
     return true;
   }
 
-  // Si no cumple, lo redirige al login y bloquea el acceso
   router.navigate(['/login']);
   return false;
 };

@@ -1,0 +1,189 @@
+<div class="facturacion">
+    <h2>Crear Factura</h2>
+
+    <form [formGroup]="form" (ngSubmit)="emitirFactura()">
+
+        <!-- =====================================================
+         DATOS DEL COMPRADOR
+    ====================================================== -->
+        <fieldset>
+            <legend>Datos del Comprador <span class="badge-sri">SRI</span></legend>
+
+            <div class="form-row">
+                <label>
+                    Tipo de identificación
+                    <select formControlName="tipo_identificacion">
+                        <option *ngFor="let tipo of tiposIdentificacion" [value]="tipo.codigo">
+                            {{ tipo.etiqueta }}
+                        </option>
+                    </select>
+                </label>
+
+                <label>
+                    Identificación
+                    <input type="text" formControlName="identificacion" placeholder="ej. 1718856915"
+                        [class.is-invalid]="isFieldInvalid('identificacion')" />
+                    <span class="error-msg" *ngIf="isFieldInvalid('identificacion')">
+                        La identificación es obligatoria.
+                    </span>
+                </label>
+            </div>
+
+            <label>
+                Razón social / Nombres completos
+                <input type="text" formControlName="razon_social" placeholder="ej. Juan Gabriel García López"
+                    [class.is-invalid]="isFieldInvalid('razon_social')" />
+                <span class="error-msg" *ngIf="isFieldInvalid('razon_social')">
+                    Este campo es obligatorio (mínimo 3 caracteres).
+                </span>
+            </label>
+
+            <div class="form-row">
+                <label>
+                    Correo electrónico
+                    <input type="email" formControlName="correo" placeholder="opcional" />
+                </label>
+
+                <label>
+                    Teléfono
+                    <input type="text" formControlName="telefono" placeholder="opcional" />
+                </label>
+            </div>
+
+            <label>
+                Dirección
+                <input type="text" formControlName="direccion" placeholder="opcional" />
+            </label>
+        </fieldset>
+
+        <!-- =====================================================
+         BUSCADOR DE PRODUCTOS
+    ====================================================== -->
+        <fieldset>
+            <legend>Agregar Productos</legend>
+
+            <div class="buscador-row">
+                <input type="text" class="buscador-input" placeholder="Buscar por nombre o código..."
+                    [(ngModel)]="terminoBusqueda" [ngModelOptions]="{standalone: true}" (input)="buscarProducto()" />
+
+                <label class="cantidad-label">
+                    Cant.
+                    <input type="number" formControlName="cantidad_a_agregar" min="1" />
+                </label>
+            </div>
+
+            @if (resultadosBusqueda.length > 0) {
+            <ul class="resultados-lista">
+                @for (producto of resultadosBusqueda; track producto.codigo_principal) {
+                <li (click)="agregarProducto(producto)">
+                    <span class="prod-nombre">{{ producto.descripcion }}</span>
+                    <span class="prod-codigo">{{ producto.codigo_principal }}</span>
+                    <span class="prod-precio">${{ producto.precio_unitario.toFixed(2) }}</span>
+                    <span class="prod-stock">Stock: {{ producto.stock_disponible }}</span>
+                </li>
+                }
+            </ul>
+            }
+        </fieldset>
+
+        <!-- =====================================================
+         DETALLE DE LA FACTURA
+    ====================================================== -->
+        <fieldset>
+            <legend>Detalle de Factura</legend>
+
+            @if (lineas.length === 0) {
+            <p class="sin-productos">Aún no has agregado productos.</p>
+            } @else {
+            <table class="tabla-detalle">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Descripción</th>
+                        <th>Cant.</th>
+                        <th>P. Unit.</th>
+                        <th>IVA</th>
+                        <th>Subtotal</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (linea of lineas; track $index) {
+                    <tr>
+                        <td>{{ linea.codigo_principal }}</td>
+                        <td>{{ linea.descripcion }}</td>
+                        <td>
+                            <input type="number" min="1" [(ngModel)]="linea.cantidad"
+                                [ngModelOptions]="{standalone: true}" (change)="recalcularLinea($index)"
+                                class="input-cell" />
+                        </td>
+                        <td>${{ linea.precio_unitario.toFixed(2) }}</td>
+                        <td>{{ linea.porcentaje_iva }}%</td>
+                        <td>${{ linea.subtotal.toFixed(2) }}</td>
+                        <td>${{ linea.total.toFixed(2) }}</td>
+                        <td>
+                            <button type="button" class="btn-eliminar" (click)="eliminarLinea($index)">✕</button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            }
+        </fieldset>
+
+        <!-- =====================================================
+         FORMA DE PAGO Y TOTALES
+    ====================================================== -->
+        <fieldset>
+            <legend>Pago y Totales <span class="badge-sri">SRI</span></legend>
+
+            <label>
+                Forma de pago
+                <select formControlName="forma_pago">
+                    <option *ngFor="let forma of formasPago" [value]="forma.codigo">
+                        {{ forma.etiqueta }}
+                    </option>
+                </select>
+            </label>
+
+            @if (desgloseIvaPorTarifa.length > 0) {
+            <div class="desglose-iva">
+                @for (grupo of desgloseIvaPorTarifa; track grupo.porcentaje) {
+                <div class="desglose-linea">
+                    <span>IVA {{ grupo.porcentaje }}% (base ${{ grupo.base.toFixed(2) }})</span>
+                    <span>${{ grupo.valor.toFixed(2) }}</span>
+                </div>
+                }
+            </div>
+            }
+
+            <div class="totales">
+                <div class="totales-linea">
+                    <span>Subtotal sin impuestos</span>
+                    <span>${{ subtotalSinImpuestos.toFixed(2) }}</span>
+                </div>
+                <div class="totales-linea">
+                    <span>Total IVA</span>
+                    <span>${{ totalIva.toFixed(2) }}</span>
+                </div>
+                <div class="totales-linea total-final">
+                    <span>TOTAL</span>
+                    <span>${{ totalFactura.toFixed(2) }}</span>
+                </div>
+            </div>
+        </fieldset>
+
+        <button type="submit" [disabled]="isLoading">
+            {{ isLoading ? 'Emitiendo...' : 'Emitir Factura' }}
+        </button>
+
+        @if (mensaje) {
+        <p [class.error]="huboError" [class.exito]="!huboError">{{ mensaje }}</p>
+        }
+
+    </form>
+</div> 
+
+
+

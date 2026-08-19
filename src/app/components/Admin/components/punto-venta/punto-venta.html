@@ -1,0 +1,59 @@
+<div class="pos-layout">
+
+    <!-- =====================================================
+       SIDEBAR IZQUIERDO
+  ====================================================== -->
+    <aside class="sidebar">
+
+        <!-- Encabezado: nombre y rol del usuario logueado -->
+        <div class="sidebar-header">
+            <div class="avatar">{{ nombreUsuario.charAt(0) }}</div>
+            <div class="user-info">
+                <p class="user-name">{{ nombreUsuario }}</p>
+                <span class="user-role">{{ rolUsuario }}</span>
+            </div>
+        </div>
+
+        <!-- Menú de navegación -->
+        <nav class="sidebar-nav">
+            <button class="nav-item" [class.active]="vistaActiva === 'productos'" (click)="mostrarVista('productos')">
+                <span class="nav-icon">📦</span>
+                Ingreso de Nuevos Productos
+            </button>
+
+            <button class="nav-item" [class.active]="vistaActiva === 'factura'" (click)="mostrarVista('factura')">
+                <span class="nav-icon">🧾</span>
+                Crear Factura
+            </button>
+        </nav>
+
+        <!-- Pie del sidebar -->
+        <div class="sidebar-footer">
+            <button class="logout-btn" (click)="cerrarSesion()">
+                <span class="nav-icon">↩</span>
+                Cerrar sesión
+            </button>
+        </div>
+
+    </aside>
+
+    <!-- =====================================================
+       CONTENIDO PRINCIPAL
+  ====================================================== -->
+    <main class="pos-content">
+
+        <div class="content-header">
+            <h1>{{ vistaActiva === 'factura' ? 'Crear Factura' : 'Ingreso de Nuevos Productos' }}</h1>
+        </div>
+
+        <div class="content-body">
+            @if (vistaActiva === 'factura') {
+            <app-facturacion></app-facturacion>
+            } @else {
+            <app-ingreso-productos></app-ingreso-productos>
+            }
+        </div>
+
+    </main>
+
+</div>
