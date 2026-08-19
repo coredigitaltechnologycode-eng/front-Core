@@ -4,13 +4,9 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { HttpErrorResponse } from '@angular/common/http';
 
 import { CoreVendedor, RegistroVendedorPayload } from '../../../../services/core-vendedor';
+import { AuthService } from '../../../../services/auth';
+ // ajusta el path real
 
-/**
- * Formulario básico de "Ingreso de Vendedor - Colaborador".
- * Un colaborador siempre pertenece a un cliente (cedula_cliente), así que
- * ese dato se pide como un campo más del formulario (versión simple, sin
- * pasar la cédula por la URL).
- */
 @Component({
   selector: 'app-ingreso-vendedor',
   standalone: true,
@@ -27,6 +23,7 @@ export class IngresoVendedor {
   constructor(
     private fb: FormBuilder,
     private coreVendedor: CoreVendedor,
+    private authService: AuthService,   // 👈 usas el que ya tienes
     private cdr: ChangeDetectorRef,
   ) {
     this.initForm();
@@ -34,7 +31,6 @@ export class IngresoVendedor {
 
   private initForm(): void {
     this.form = this.fb.group({
-      cedula_cliente: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       cedula: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       nombres_completos: ['', [Validators.required, Validators.minLength(3)]],
       fecha_ingreso: ['', [Validators.required]],
@@ -54,10 +50,15 @@ export class IngresoVendedor {
       return;
     }
 
+    const cedulaCliente = this.authService.obtenerCedula();
+    if (!cedulaCliente) {
+      this.huboError = true;
+      this.mensaje = 'Tu sesión expiró. Vuelve a iniciar sesión.';
+      return;
+    }
+
     this.isLoading = true;
     this.mensaje = '';
-
-    const cedulaCliente: string = this.form.value.cedula_cliente;
 
     const datos: RegistroVendedorPayload = {
       cedula: this.form.value.cedula,
@@ -66,7 +67,6 @@ export class IngresoVendedor {
       salario: this.form.value.salario,
       usuario_creado: this.form.value.usuario_creado,
       contraseña_creada: this.form.value.contraseña_creada,
-      // La fecha viene como aaaa-mm-dd de <input type="date">, el backend espera dd/mm/aaaa
       fecha_ingreso: this.aFormatoBackend(this.form.value.fecha_ingreso),
       fecha_nacimiento: this.aFormatoBackend(this.form.value.fecha_nacimiento),
     };
@@ -89,7 +89,6 @@ export class IngresoVendedor {
   }
 
   private aFormatoBackend(fechaInput: string): string {
-    // 'aaaa-mm-dd' -> 'dd/mm/aaaa'
     const [anio, mes, dia] = fechaInput.split('-');
     return `${dia}/${mes}/${anio}`;
   }

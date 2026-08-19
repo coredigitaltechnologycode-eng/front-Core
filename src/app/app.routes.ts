@@ -7,6 +7,7 @@ import { RegistroAdmin } from './components/Admin/components/registro-admin/regi
 import { HomeClientes } from './components/clientes/home-clientes/home-clientes';
 import { LoginComponent } from './components/login/login'; // 👈 ajusta esta ruta de importación a la real
 import { IngresoVendedor } from './components/clientes/components/ingreso-vendedor/ingreso-vendedor';
+import { PuntoVenta } from './components/Admin/components/punto-venta/punto-venta';
 
 export const routes: Routes = [
 
@@ -18,8 +19,9 @@ export const routes: Routes = [
     {path:"home-admin", component:HomeAdmin, canActivate: [authGuardGuard], data: { rolesPermitidos: ['admin'] }},
     {path:"registro-clientes", component:IngresoClientes, canActivate: [authGuardGuard], data: { rolesPermitidos: ['admin'] }},
     {path:"registro-admin", component:RegistroAdmin, canActivate: [authGuardGuard], data: { rolesPermitidos: ['admin'] }},
-    {path:"ingreso-vendedor", component:IngresoVendedor, canActivate: [authGuardGuard], data: { rolesPermitidos: ['admin'] }},
+    {path:"ingreso-vendedor", component:IngresoVendedor, canActivate: [authGuardGuard], data: { rolesPermitidos: ['cliente'] }},
     {path:"home-cliente", component: HomeClientes, canActivate: [authGuardGuard], data: { rolesPermitidos: ['cliente'] }},
+    {path:"punto-venta", component: PuntoVenta, canActivate: [authGuardGuard], data: { rolesPermitidos: ['admin'] }},
     {path:'', redirectTo : 'Home', pathMatch:'full'},
 
 ];

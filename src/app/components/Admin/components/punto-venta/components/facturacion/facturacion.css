@@ -1,0 +1,253 @@
+.facturacion {
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.facturacion h2 {
+    margin-bottom: 18px;
+    color: #16303a;
+}
+
+fieldset {
+    border: 1px solid #dde5e7;
+    border-radius: 10px;
+    padding: 18px 20px 20px;
+    margin-bottom: 18px;
+}
+
+legend {
+    font-weight: 600;
+    color: #0b7285;
+    padding: 0 8px;
+    font-size: 0.9rem;
+}
+
+.badge-sri {
+    display: inline-block;
+    background: #0b7285;
+    color: #fff;
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 4px;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+}
+
+.form-row label {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin-bottom: 14px;
+    font-size: 0.85rem;
+    color: #33474e;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+select {
+    width: 100%;
+    margin-top: 6px;
+    padding: 9px 10px;
+    border: 1px solid #cfd9db;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+}
+
+input.is-invalid {
+    border-color: #d9534f;
+}
+
+.error-msg {
+    display: block;
+    color: #d9534f;
+    font-size: 0.75rem;
+    margin-top: 4px;
+}
+
+/* --- Buscador de productos --- */
+
+.buscador-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+.buscador-input {
+    flex: 1;
+    padding: 9px 10px;
+    border: 1px solid #cfd9db;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.cantidad-label {
+    width: 90px;
+    margin-bottom: 0;
+}
+
+.resultados-lista {
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+    border: 1px solid #e2e8ea;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.resultados-lista li {
+    display: grid;
+    grid-template-columns: 2fr 1fr 0.7fr 0.8fr;
+    gap: 8px;
+    padding: 10px 12px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    border-bottom: 1px solid #f0f4f5;
+    transition: background 0.15s ease;
+}
+
+.resultados-lista li:hover {
+    background: #f4f9fa;
+}
+
+.resultados-lista li:last-child {
+    border-bottom: none;
+}
+
+.prod-codigo {
+    color: #6b7c80;
+}
+
+.prod-precio {
+    font-weight: 600;
+    color: #0b7285;
+}
+
+.prod-stock {
+    color: #6b7c80;
+    font-size: 0.8rem;
+}
+
+/* --- Tabla de detalle --- */
+
+.sin-productos {
+    color: #6b7c80;
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.tabla-detalle {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.tabla-detalle th {
+    text-align: left;
+    color: #6b7c80;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    padding: 8px 6px;
+    border-bottom: 2px solid #e2e8ea;
+}
+
+.tabla-detalle td {
+    padding: 8px 6px;
+    border-bottom: 1px solid #f0f4f5;
+}
+
+.input-cell {
+    width: 60px;
+    padding: 4px 6px;
+    margin-top: 0;
+}
+
+.btn-eliminar {
+    background: transparent;
+    border: none;
+    color: #d9534f;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* --- Totales --- */
+
+.desglose-iva {
+    background: #f4f9fa;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    font-size: 0.82rem;
+}
+
+.desglose-linea {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 0;
+    color: #33474e;
+}
+
+.totales {
+    border-top: 1px solid #e2e8ea;
+    padding-top: 12px;
+}
+
+.totales-linea {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    font-size: 0.9rem;
+    color: #33474e;
+}
+
+.total-final {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0b7285;
+    border-top: 1px solid #e2e8ea;
+    margin-top: 6px;
+    padding-top: 8px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: #0b7285;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+    background: #075a68;
+}
+
+button[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+p.error {
+    color: #d9534f;
+    margin-top: 10px;
+}
+
+p.exito {
+    color: #2e7d32;
+    margin-top: 10px;
+}

@@ -1,377 +1,115 @@
-<!-- =====================================================
-     CONTENEDOR PRINCIPAL DEL LOGIN
-     Aquí se encuentra toda la pantalla de inicio de sesión
-===================================================== -->
 <div class="login-container">
-
-
-  <!-- =====================================================
-       TARJETA PRINCIPAL DEL LOGIN
-       Contiene las dos partes:
-       1. Marca / Logo / Imagen
-       2. Formulario de acceso
-  ====================================================== -->
   <div class="login-card">
 
-
-    <!-- =====================================================
-         SECCIÓN IZQUIERDA - IDENTIDAD DE LA EMPRESA
-         Aquí se muestra el logo, slogan e imagen decorativa
-    ====================================================== -->
+    <!-- ============ PANEL DE MARCA ============ -->
     <div class="brand-section">
 
-
-      <!-- Contenedor general del logo -->
-      <div class="logo-container">
-
-
-        <!-- Contenedor específico para controlar tamaño y estilo del logo -->
-        <div class="Logo-Core-img">
-
-
-          <!-- Logo principal de Core Digital ubicado en assets/img -->
-          <img src="assets/img/logo_sin _fondo.png" alt="Core Digital" class="Logo">
-
+      <div class="brand-top">
+        <div class="logo-container">
+          <div class="Logo-Core-img">
+            <img src="assets/img/logo_sin _fondo.png" alt="Core Digital" class="Logo">
+          </div>
         </div>
-
       </div>
 
+      <div class="brand-mid">
+        <h2 class="slogan1">Facturación clara, en cada punto de venta.</h2>
+        <p class="brand-sub">Gestiona ventas, comprobantes e inventario desde un solo sistema.</p>
 
-      <!-- Slogan o frase principal de la empresa -->
-      <h2 class="slogan1">
-        Transformamos ideas en sistemas inteligentes
-      </h2>
+        <div class="ticket-wrap">
+          <div class="ticket">
+            <div class="ticket-head">
+              <span>Comprobante</span>
+              <span>#00482</span>
+            </div>
+            <div class="ticket-line"><span>Producto A × 2</span><b>$24.00</b></div>
+            <div class="ticket-line"><span>Producto B × 1</span><b>$15.50</b></div>
+            <div class="ticket-line"><span>IVA (15%)</span><b>$5.93</b></div>
+            <div class="ticket-total"><span>Total</span><span>$45.43</span></div>
+          </div>
+        </div>
+      </div>
 
-
-      <!-- Imagen decorativa debajo del logo -->
-      <!-- Representa la parte visual del sistema -->
-      <img src="assets/img/pc_bajo_logo.png" alt="pc_bajo_logo" class="pc">
-
-
+      <div class="brand-bottom">
+        <span>© 2026 Core Digital</span>
+        <span>Sistema de Facturación POS</span>
+      </div>
     </div>
 
-
-
-
-
-    <!-- =====================================================
-         SECCIÓN DERECHA - FORMULARIO DE LOGIN
-         Aquí el usuario ingresa sus credenciales
-    ====================================================== -->
+    <!-- ============ PANEL DE FORMULARIO ============ -->
     <div class="form-section">
-
-
-      <!-- Encabezado del formulario -->
-      <!-- Contiene título y descripción -->
       <div class="form-header">
-
-        <h1>
-          Iniciar Sesión
-        </h1>
-
-        <p>
-          Accede a tu cuenta
-        </p>
-
+        <h1>Bienvenido de nuevo</h1>
+        <p>Inicia sesión para continuar en tu punto de venta</p>
       </div>
 
-
-
-
-
-      <!-- =====================================================
-           FORMULARIO ANGULAR
-           [formGroup] conecta con el formulario del TypeScript
-           (ngSubmit) ejecuta la función del login
-      ====================================================== -->
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
 
-
-
-
-
-        <!-- =====================================================
-             CAMPO USUARIO / CORREO
-             Permite ingresar el email del usuario
-        ====================================================== -->
         <div class="form-group">
-
-
-          <!-- Nombre del campo -->
-          <label for="username">
-            Nombre de Usuario
-          </label>
-
-
-
-          <!-- Contenedor del input + icono -->
+          <label for="username">Usuario</label>
           <div class="input-wrapper">
-
-
-            <!-- Icono de usuario -->
-            <svg class="input-icon">
-              ...
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke="currentColor">
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/><circle cx="12" cy="8" r="4"/>
             </svg>
-
-
-
-            <!-- Input del correo -->
             <input type="email" id="username" formControlName="username" placeholder="nombre@empresa.com"
               [class.is-invalid]="isFieldInvalid('username')" />
-
           </div>
-
-
-
-          <!-- Mensaje cuando el correo es incorrecto -->
-          <span class="error-msg" *ngIf="isFieldInvalid('username')">
-
-            Ingrese un correo electrónico válido
-
-          </span>
-
-
+          <span class="error-msg" *ngIf="isFieldInvalid('username')">Ingrese un correo electrónico válido</span>
         </div>
 
-
-
-
-
-
-        <!-- =====================================================
-             CAMPO CONTRASEÑA
-             Permite ingresar la clave del usuario
-        ====================================================== -->
         <div class="form-group">
-
-
-          <label for="password">
-            Contraseña
-          </label>
-
-
-
-          <!-- Contenedor del input + iconos -->
+          <label for="password">Contraseña</label>
           <div class="input-wrapper">
-
-
-            <!-- Icono de candado -->
-            <svg class="input-icon">
-              ...
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke="currentColor">
+              <rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/>
             </svg>
-
-
-
-            <!-- Campo contraseña -->
-            <!-- Cambia entre texto y password -->
             <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password"
               placeholder="••••••••••••" [class.is-invalid]="isFieldInvalid('password')" />
-
-
-
-
-            <!-- Botón mostrar / ocultar contraseña -->
             <button type="button" class="toggle-password" (click)="togglePasswordVisibility()">
-
-
-              <!-- Ojo abierto -->
-              <!-- Se muestra cuando la contraseña está oculta -->
-
-
-              <!-- Ojo cerrado -->
-              <!-- Se muestra cuando la contraseña es visible -->
-
-
+              <svg *ngIf="!showPassword" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke="currentColor">
+                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/>
+              </svg>
+              <svg *ngIf="showPassword" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke="currentColor">
+                <path d="M3 3l18 18M10.6 10.6a3 3 0 004.24 4.24M6.5 6.7C3.9 8.3 2 12 2 12s4 7 11 7c1.9 0 3.5-.5 4.9-1.2M9.9 4.2A10.6 10.6 0 0112 4c7 0 11 7 11 7s-.9 1.6-2.5 3.1"/>
+              </svg>
             </button>
-
-
-
           </div>
-
-
-
-          <!-- Mensaje de error contraseña -->
-          <span class="error-msg" *ngIf="isFieldInvalid('password')">
-
-            La contraseña es requerida
-
-          </span>
-
-
+          <span class="error-msg" *ngIf="isFieldInvalid('password')">La contraseña es requerida</span>
         </div>
 
+        <div class="row-between">
+          <label class="remember"><input type="checkbox">Recordarme</label>
+          <a routerLink="/forgot-password" class="link-muted">¿Olvidó su contraseña?</a>
+        </div>
 
-
-
-
-
-
-        <!-- =====================================================
-             BOTÓN DE INICIO DE SESIÓN
-             Envía los datos del formulario
-        ====================================================== -->
         <button type="submit" class="btn-submit">
-
-
-          <!-- Texto del botón -->
-          <span class="btn-text">
-
-            Iniciar Sesión
-
-          </span>
-
-
-
-
-          <!-- Animación de pixeles del botón -->
-          <!-- Se usa para efecto visual -->
+          <span class="btn-text">Iniciar Sesión</span>
           <div class="pixels">
-
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-
+            <span></span><span></span><span></span><span></span><span></span><span></span>
           </div>
-
-
         </button>
 
+        <div class="divider-row">acceso seguro</div>
 
-
-
-
-
-        <!-- =====================================================
-             PIE DEL FORMULARIO
-             Enlaces secundarios
-        ====================================================== -->
         <div class="form-footer">
-
-
-          <!-- Recuperación de contraseña -->
-          <a routerLink="/forgot-password" class="link-forgot">
-
-            ¿Olvidó su contraseña?
-
-          </a>
-
-
-
-
-          <!-- Registro de nuevos usuarios -->
-          <a routerLink="/register" class="link-register">
-
-            Registrarse
-
-          </a>
-
-
+          ¿No tiene cuenta? <a routerLink="/register" class="link-register">Regístrese</a>
         </div>
 
-
-
       </form>
-
-
     </div>
 
-
   </div>
-
-
 </div>
 
-
-
-
-
-
-
-<!-- =====================================================
-     MODAL DE RESULTADO DEL LOGIN
-     Ventana emergente para mostrar:
-     - Login correcto
-     - Error de acceso
-===================================================== -->
-
+<!-- ============ MODAL DE RESULTADO ============ -->
 <div class="modal-overlay" *ngIf="mostrarModal" (click)="cerrarModal()">
-
-
-
-  <!-- Caja interna del mensaje -->
-  <div class="modal-box" [class.modal-exito]="modalExito" [class.modal-error]="!modalExito"
-    (click)="$event.stopPropagation()">
-
-
-
-
-
-    <!-- Icono del resultado -->
+  <div class="modal-box" [class.modal-exito]="modalExito" [class.modal-error]="!modalExito" (click)="$event.stopPropagation()">
     <div class="modal-icon">
-
-
-      <!-- Icono cuando el login es exitoso -->
-      <svg *ngIf="modalExito">
-        ...
-      </svg>
-
-
-
-      <!-- Icono cuando ocurre un error -->
-      <svg *ngIf="!modalExito">
-        ...
-      </svg>
-
-
+      <svg *ngIf="modalExito" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg>
+      <svg *ngIf="!modalExito" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
     </div>
-
-
-
-
-
-    <!-- Título dinámico -->
-    <!-- Cambia según éxito o error -->
-    <h3 class="modal-titulo">
-
-      {{ modalExito ? '¡Login exitoso!' : 'Error al iniciar sesión' }}
-
-    </h3>
-
-
-
-
-
-    <!-- Mensaje enviado desde TypeScript -->
-    <p class="modal-mensaje">
-
-      {{ modalMensaje }}
-
-    </p>
-
-
-
-
-
-    <!-- Botón cerrar modal -->
-    <button type="button" class="modal-btn" (click)="cerrarModal()">
-
-      Aceptar
-
-    </button>
-
-
-
-
+    <h3 class="modal-titulo">{{ modalExito ? '¡Login exitoso!' : 'Error al iniciar sesión' }}</h3>
+    <p class="modal-mensaje">{{ modalMensaje }}</p>
+    <button type="button" class="modal-btn" (click)="cerrarModal()">Aceptar</button>
   </div>
-
-
 </div>

@@ -70,14 +70,26 @@ export class LoginComponent implements OnInit {
     const credencialesAdmin: LoginAdminPayload = { correo: identificador, contraseña };
 
     this.coreAdmin.loginAdmin(credencialesAdmin).subscribe({
-      next: (respuesta: LoginAdminResponse) => this.manejarLoginExitoso(respuesta.token, respuesta.rol, respuesta.nombres_completos),
+      next: (respuesta: LoginAdminResponse) =>
+        this.manejarLoginExitoso(
+          respuesta.token,
+          respuesta.rol,
+          respuesta.nombres_completos,
+          (respuesta as any).cedula ?? ''
+        ),
       error: (errorAdmin: HttpErrorResponse) => {
         // 2. Si no es admin (401), se intenta como cliente
         if (errorAdmin.status === 401) {
           const credencialesCliente: LoginClientePayload = { identificador, contraseña };
 
           this.coreCliente.loginCliente(credencialesCliente).subscribe({
-            next: (respuesta: LoginClienteResponse) => this.manejarLoginExitoso(respuesta.token, respuesta.rol, respuesta.nombres_completos),
+            next: (respuesta: LoginClienteResponse) =>
+              this.manejarLoginExitoso(
+                respuesta.token,
+                respuesta.rol,
+                respuesta.nombres_completos,
+                respuesta.cedula
+              ),
             error: (errorCliente: HttpErrorResponse) => this.manejarLoginFallido(errorCliente),
           });
         } else {
@@ -87,10 +99,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  private manejarLoginExitoso(token: string, rol: string, nombresCompletos: string): void {
+  private manejarLoginExitoso(token: string, rol: string, nombresCompletos: string, cedula: string): void {
     this.isLoading = false;
 
-    this.authService.guardarSesion(token, rol, nombresCompletos);
+    this.authService.guardarSesion(token, rol, nombresCompletos, cedula);
 
     this.modalExito = true;
     this.modalMensaje = `Login exitoso. Bienvenido ${nombresCompletos}`;

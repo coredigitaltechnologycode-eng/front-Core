@@ -1,0 +1,253 @@
+* {
+    box-sizing: border-box;
+}
+
+.home-container {
+    min-height: 100vh;
+    padding: 35px 45px;
+    background: #f5f7fb;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+    background: white;
+    border-radius: 18px;
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+
+    border: 1px solid #e7eaf0;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+}
+
+.header h1 {
+    margin: 0 0 8px 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.header p {
+    margin: 0;
+    color: #64748b;
+    font-size: 15px;
+}
+
+.header-icon {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+    background: #eef2ff;
+
+    font-size: 28px;
+}
+
+
+/* =========================================
+   GRID DE MÓDULOS
+========================================= */
+
+.modulos {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+
+/* =========================================
+   MÓDULO
+========================================= */
+
+.modulo {
+    position: relative;
+
+    background: white;
+
+    border: 1px solid #e7eaf0;
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    min-height: 210px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+
+    overflow: hidden;
+}
+
+
+/* EFECTO HOVER */
+
+.modulo:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.09);
+
+    border-color: #cbd5e1;
+}
+
+
+/* =========================================
+   ICONO
+========================================= */
+
+.icon-container {
+    width: 58px;
+    height: 58px;
+
+    border-radius: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 26px;
+
+    margin-bottom: 22px;
+}
+
+
+/* COLORES DE ICONOS */
+
+.icon-container.clientes {
+    background: #e0f2fe;
+}
+
+.icon-container.historial {
+    background: #fef3c7;
+}
+
+.icon-container.pagos {
+    background: #dcfce7;
+}
+
+.icon-container.reportes {
+    background: #ede9fe;
+}
+
+.icon-container.configuracion {
+    background: #f1f5f9;
+}
+
+.icon-container.perfil {
+    background: #fce7f3;
+}
+
+
+/* =========================================
+   INFORMACIÓN
+========================================= */
+
+.modulo-info h2 {
+    margin: 0 0 9px 0;
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+    color: #1e293b;
+}
+
+.modulo-info p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    max-width: 90%;
+}
+
+
+/* =========================================
+   FLECHA
+========================================= */
+
+.flecha {
+    position: absolute;
+
+    right: 22px;
+    bottom: 20px;
+
+    width: 35px;
+    height: 35px;
+
+    border-radius: 50%;
+
+    background: #f1f5f9;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #475569;
+
+    font-size: 18px;
+
+    transition: all 0.25s ease;
+}
+
+.modulo:hover .flecha {
+    background: #1e293b;
+
+    color: white;
+
+    transform: translateX(4px);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .modulos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .home-container {
+        padding: 20px;
+    }
+
+    .header {
+        padding: 22px;
+    }
+
+    .header h1 {
+        font-size: 23px;
+    }
+
+    .modulos {
+        grid-template-columns: 1fr;
+    }
+
+}

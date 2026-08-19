@@ -1,1 +1,146 @@
-<p>home-clientes works!</p>
+<div class="home-container">
+
+    <!-- ENCABEZADO -->
+    <header class="header">
+        <div>
+            <h1>Bienvenido Estimado (Nombre del Cliente)</h1>
+            <p>Aqui podras tener acceso a los modulos de su plan seleccionado</p>
+        </div>
+
+        <div class="header-icon">
+            👥
+        </div>
+    </header>
+
+
+    <!-- MÓDULOS -->
+    <section class="modulos">
+
+        <!-- CLIENTES -->
+        <div class="modulo" (click)="irAIngresoVendedor('/clientes')">
+
+            <div class="icon-container clientes">
+                👤
+            </div>
+
+            <div class="modulo-info">
+                <h2>Ingresar Colaborador</h2>
+                <p>
+                    Registrar a los colaboradores del sistema.
+                </p>
+            </div>
+
+            <div class="flecha">
+                →
+            </div>
+
+        </div>
+
+
+        <!-- HISTORIAL CLIENTES -->
+        <div class="modulo" (click)="irAIngresoVendedor('/historial-clientes')">
+
+            <div class="icon-container historial">
+                📋
+            </div>
+
+            <div class="modulo-info">
+                <h2>Historial de Clientes</h2>
+                <p>
+                    Consulta y administra el historial de clientes registrados.
+                </p>
+            </div>
+
+            <div class="flecha">
+                →
+            </div>
+
+        </div>
+
+
+        <!-- PAGOS -->
+        <div class="modulo" (click)="irAIngresoVendedor('/historial-pagos')">
+
+            <div class="icon-container pagos">
+                💳
+            </div>
+
+            <div class="modulo-info">
+                <h2>Historial de Pagos</h2>
+                <p>
+                    Consulta pagos, fechas y estados de los clientes.
+                </p>
+            </div>
+
+            <div class="flecha">
+                →
+            </div>
+
+        </div>
+
+
+        <!-- REPORTES -->
+        <div class="modulo" (click)="irAIngresoVendedor('/reportes')">
+
+            <div class="icon-container reportes">
+                📊
+            </div>
+
+            <div class="modulo-info">
+                <h2>Reportes</h2>
+                <p>
+                    Visualiza información y estadísticas de los clientes.
+                </p>
+            </div>
+
+            <div class="flecha">
+                →
+            </div>
+
+        </div>
+
+
+        <!-- CONFIGURACIÓN -->
+        <div class="modulo" (click)="irAIngresoVendedor('/configuracion')">
+
+            <div class="icon-container configuracion">
+                ⚙️
+            </div>
+
+            <div class="modulo-info">
+                <h2>Configuración</h2>
+                <p>
+                    Configura las opciones generales del sistema.
+                </p>
+            </div>
+
+            <div class="flecha">
+                →
+            </div>
+
+        </div>
+
+
+        <!-- PERFIL -->
+        <div class="modulo" (click)="irAIngresoVendedor('/perfil')">
+
+            <div class="icon-container perfil">
+                🛡️
+            </div>
+
+            <div class="modulo-info">
+                <h2>Mi Perfil</h2>
+                <p>
+                    Consulta y modifica la información de tu cuenta.
+                </p>
+            </div>
+
+            <div class="flecha">
+                →
+            </div>
+
+        </div>
+
+    </section>
+
+</div>

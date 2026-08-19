@@ -5,10 +5,11 @@ import { Router } from '@angular/router';
 export class AuthService {
   constructor(private router: Router) {}
 
-  guardarSesion(token: string, rol: string, nombresCompletos: string): void {
+  guardarSesion(token: string, rol: string, nombresCompletos: string, cedula: string): void {
     localStorage.setItem('token', token);
     localStorage.setItem('rol', rol);
     localStorage.setItem('nombres_completos', nombresCompletos);
+    localStorage.setItem('cedula', cedula);   // 👈 nuevo
   }
 
   redirigirSegunRol(): void {
@@ -27,6 +28,10 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+  obtenerCedula(): string | null {           // 👈 nuevo
+    return localStorage.getItem('cedula');
+  }
+
   estaAutenticado(): boolean {
     return !!this.obtenerToken();
   }
@@ -35,6 +40,7 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('rol');
     localStorage.removeItem('nombres_completos');
+    localStorage.removeItem('cedula');        // 👈 no olvides limpiarla también
     this.router.navigate(['/login']);
   }
 }
