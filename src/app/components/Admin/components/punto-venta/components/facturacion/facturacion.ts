@@ -72,6 +72,7 @@ export class Facturacion {
     { codigo: '19', etiqueta: 'Tarjeta de crédito' },
     { codigo: '20', etiqueta: 'Otros con utilización del sistema financiero' },
     { codigo: '21', etiqueta: 'Endoso de títulos' },
+    
   ];
 
   /** Catálogo de productos disponibles para buscar/agregar (vendría de Firebase) */
