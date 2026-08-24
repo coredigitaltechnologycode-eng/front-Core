@@ -190,6 +190,11 @@ export class IngresoClientes {
 
     this.cdr.detectChanges();
   }
+  seccionActiva: number = 1;
+
+irASeccion(numero: number): void {
+  this.seccionActiva = numero;
+}
 
   campoInvalido(
     nombreCampo: string,

@@ -1,146 +1,301 @@
-<div class="home-container">
-
-    <!-- ENCABEZADO -->
-    <header class="header">
-        <div>
-            <h1>Bienvenido Estimado (Nombre del Cliente)</h1>
-            <p>Aqui podras tener acceso a los modulos de su plan seleccionado</p>
-        </div>
-
-        <div class="header-icon">
-            👥
-        </div>
-    </header>
+<!-- =====================================================
+     NAVBAR
+====================================================== -->
+<app-nav-bar></app-nav-bar>
 
 
-    <!-- MÓDULOS -->
-    <section class="modulos">
+<!-- =====================================================
+     CONTENIDO PRINCIPAL
+====================================================== -->
+<main class="home-page">
 
-        <!-- CLIENTES -->
-        <div class="modulo" (click)="irAIngresoVendedor('/clientes')">
+    <div class="home-container">
 
-            <div class="icon-container clientes">
-                👤
-            </div>
+        <!-- =====================================================
+             ENCABEZADO
+        ====================================================== -->
+        <header class="header">
 
-            <div class="modulo-info">
-                <h2>Ingresar Colaborador</h2>
+            <div class="header-content">
+
+                <span class="header-kicker">
+                    Modulo Usuario
+                </span>
+
+                <h1>
+                    Bienvenido Estimado (Nombre del Cliente)
+                </h1>
+
                 <p>
-                    Registrar a los colaboradores del sistema.
+                    Aquí podrás tener acceso a los módulos de tu plan seleccionado.
                 </p>
+
             </div>
 
-            <div class="flecha">
-                →
+
+            <!-- =================================================
+                 MARCA / LOGO CORE DIGITAL
+            ================================================== -->
+            <div class="header-brand">
+
+                <div class="header-logo-wrapper">
+
+                    <img
+                        src="assets/img/logo_sin _fondo.png"
+                        alt="Core Digital"
+                        class="header-logo"
+                    />
+
+                </div>
+
+                <div class="header-brand-info">
+
+                    <strong>
+                        Core Digital
+                    </strong>
+
+                    <span>
+                        Modulo usuario
+                    </span>
+
+                </div>
+
             </div>
 
-        </div>
+        </header>
 
 
-        <!-- HISTORIAL CLIENTES -->
-        <div class="modulo" (click)="irAIngresoVendedor('/historial-clientes')">
+        <!-- =====================================================
+             CONTENEDOR DECORATIVO DE MÓDULOS
+        ====================================================== -->
+        <div class="modulos-wrapper">
 
-            <div class="icon-container historial">
-                📋
-            </div>
 
-            <div class="modulo-info">
-                <h2>Historial de Clientes</h2>
+            <!-- =================================================
+                 CABECERA DE SECCIÓN
+            ================================================== -->
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-kicker">
+                        Accesos rápidos
+                    </span>
+
+                    <h2>
+                        Módulos del sistema de Usuario
+                    </h2>
+
+                </div>
+
                 <p>
-                    Consulta y administra el historial de clientes registrados.
+                    Selecciona una opción para continuar.
                 </p>
+
             </div>
 
-            <div class="flecha">
-                →
-            </div>
+
+            <!-- =================================================
+                 MÓDULOS
+            ================================================== -->
+            <section class="modulos">
+
+
+                <!-- =============================================
+                     CLIENTES
+                ============================================== -->
+                <div
+                    class="modulo"
+                    (click)="irAIngresoVendedor('/clientes')"
+                >
+
+                    <div class="icon-container clientes">
+                        👤
+                    </div>
+
+                    <div class="modulo-info">
+
+                        <h2>
+                            Ingresar Colaborador
+                        </h2>
+
+                        <p>
+                            Registrar a los colaboradores del sistema.
+                        </p>
+
+                    </div>
+
+                    <div class="flecha">
+                        →
+                    </div>
+
+                </div>
+
+
+                <!-- =============================================
+                     HISTORIAL CLIENTES
+                ============================================== -->
+                <div
+                    class="modulo"
+                    (click)="irAIngresoVendedor('/historial-clientes')"
+                >
+
+                    <div class="icon-container historial">
+                        📋
+                    </div>
+
+                    <div class="modulo-info">
+
+                        <h2>
+                            Historial de Clientes
+                        </h2>
+
+                        <p>
+                            Consulta y administra el historial de clientes registrados.
+                        </p>
+
+                    </div>
+
+                    <div class="flecha">
+                        →
+                    </div>
+
+                </div>
+
+
+                <!-- =============================================
+                     PAGOS
+                ============================================== -->
+                <div
+                    class="modulo"
+                    (click)="irAIngresoVendedor('/historial-pagos')"
+                >
+
+                    <div class="icon-container pagos">
+                        💳
+                    </div>
+
+                    <div class="modulo-info">
+
+                        <h2>
+                            Historial de Pagos
+                        </h2>
+
+                        <p>
+                            Consulta pagos, fechas y estados de los clientes.
+                        </p>
+
+                    </div>
+
+                    <div class="flecha">
+                        →
+                    </div>
+
+                </div>
+
+
+                <!-- =============================================
+                     REPORTES
+                ============================================== -->
+                <div
+                    class="modulo"
+                    (click)="irAIngresoVendedor('/reportes')"
+                >
+
+                    <div class="icon-container reportes">
+                        📊
+                    </div>
+
+                    <div class="modulo-info">
+
+                        <h2>
+                            Reportes
+                        </h2>
+
+                        <p>
+                            Visualiza información y estadísticas de los clientes.
+                        </p>
+
+                    </div>
+
+                    <div class="flecha">
+                        →
+                    </div>
+
+                </div>
+
+
+                <!-- =============================================
+                     CONFIGURACIÓN
+                ============================================== -->
+                <div
+                    class="modulo"
+                    (click)="irAIngresoVendedor('/configuracion')"
+                >
+
+                    <div class="icon-container configuracion">
+                        ⚙️
+                    </div>
+
+                    <div class="modulo-info">
+
+                        <h2>
+                            Configuración
+                        </h2>
+
+                        <p>
+                            Configura las opciones generales del sistema.
+                        </p>
+
+                    </div>
+
+                    <div class="flecha">
+                        →
+                    </div>
+
+                </div>
+
+
+                <!-- =============================================
+                     PERFIL
+                ============================================== -->
+                <div
+                    class="modulo"
+                    (click)="irAIngresoVendedor('/perfil')"
+                >
+
+                    <div class="icon-container perfil">
+                        🛡️
+                    </div>
+
+                    <div class="modulo-info">
+
+                        <h2>
+                            Mi Perfil
+                        </h2>
+
+                        <p>
+                            Consulta y modifica la información de tu cuenta.
+                        </p>
+
+                    </div>
+
+                    <div class="flecha">
+                        →
+                    </div>
+
+                </div>
+
+            </section>
 
         </div>
 
+    </div>
 
-        <!-- PAGOS -->
-        <div class="modulo" (click)="irAIngresoVendedor('/historial-pagos')">
-
-            <div class="icon-container pagos">
-                💳
-            </div>
-
-            <div class="modulo-info">
-                <h2>Historial de Pagos</h2>
-                <p>
-                    Consulta pagos, fechas y estados de los clientes.
-                </p>
-            </div>
-
-            <div class="flecha">
-                →
-            </div>
-
-        </div>
+</main>
 
 
-        <!-- REPORTES -->
-        <div class="modulo" (click)="irAIngresoVendedor('/reportes')">
-
-            <div class="icon-container reportes">
-                📊
-            </div>
-
-            <div class="modulo-info">
-                <h2>Reportes</h2>
-                <p>
-                    Visualiza información y estadísticas de los clientes.
-                </p>
-            </div>
-
-            <div class="flecha">
-                →
-            </div>
-
-        </div>
-
-
-        <!-- CONFIGURACIÓN -->
-        <div class="modulo" (click)="irAIngresoVendedor('/configuracion')">
-
-            <div class="icon-container configuracion">
-                ⚙️
-            </div>
-
-            <div class="modulo-info">
-                <h2>Configuración</h2>
-                <p>
-                    Configura las opciones generales del sistema.
-                </p>
-            </div>
-
-            <div class="flecha">
-                →
-            </div>
-
-        </div>
-
-
-        <!-- PERFIL -->
-        <div class="modulo" (click)="irAIngresoVendedor('/perfil')">
-
-            <div class="icon-container perfil">
-                🛡️
-            </div>
-
-            <div class="modulo-info">
-                <h2>Mi Perfil</h2>
-                <p>
-                    Consulta y modifica la información de tu cuenta.
-                </p>
-            </div>
-
-            <div class="flecha">
-                →
-            </div>
-
-        </div>
-
-    </section>
-
-</div>
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+<app-footer></app-footer>

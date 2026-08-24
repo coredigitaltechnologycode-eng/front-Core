@@ -1,61 +1,599 @@
-<div class="ingreso-vendedor">
-  <h2>Ingreso de Vendedor - Colaborador</h2>
+<!-- =====================================================
+     NAVBAR
+====================================================== -->
+<app-nav-bar></app-nav-bar>
 
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-    <label>
-      Cédula
-      <input type="text" formControlName="cedula" placeholder="ej. 1712345678" maxlength="10" />
-    </label>
+<!-- =====================================================
+     PÁGINA
+====================================================== -->
+<div class="vendedor-page">
 
-    <label>
-      Nombres completos
-      <input type="text" formControlName="nombres_completos" placeholder="ej. Juan Gabriel García López" />
-    </label>
+  <div class="vendedor-shell">
 
-    <label>
-      Fecha de ingreso
-      <input type="date" formControlName="fecha_ingreso" />
-    </label>
 
-    <label>
-      Tipo de Contrato
-      <select formControlName="tipo_contrato">
-        <option value="" disabled selected>Selecciona una opción</option>
-        <option value="tiempo_indefinido">Tiempo Indefinido</option>
-        <option value="plazo_fijo">Plazo Fijo</option>
-        <option value="temporal">Temporal</option>
-        <option value="practicas">Prácticas</option>
-      </select>
-    </label>
+    <!-- =====================================================
+         ENCABEZADO
+    ====================================================== -->
+    <section class="vendedor-hero">
 
-    <label>
-      Fecha de nacimiento
-      <input type="date" formControlName="fecha_nacimiento" />
-    </label>
+      <div class="hero-copy">
 
-    <label>
-      Salario (USD)
-      <input type="number" formControlName="salario" step="0.01" min="0" placeholder="ej. 1200.00" />
-    </label>
+        <span class="hero-kicker">
+          Gestión de colaboradores
+        </span>
 
-    <label>
-      Usuario
-      <input type="text" formControlName="usuario_creado" placeholder="ej. jgarcia123" />
-    </label>
+        <h1>
+          Nuevo vendedor
+        </h1>
 
-    <label>
-      Contraseña
-      <input type="password" formControlName="contraseña_creada" />
-    </label>
+        <p>
+          Registra la información laboral y las credenciales
+          de acceso del nuevo colaborador.
+        </p>
 
-    <button type="submit" [disabled]="isLoading">
-      {{ isLoading ? 'Guardando...' : 'Guardar Registro' }}
-    </button>
+      </div>
 
-    @if (mensaje) {
-      <p [class.error]="huboError" [class.exito]="!huboError">{{ mensaje }}</p>
-    }
 
-  </form>
+      <div class="hero-icon" aria-hidden="true">
+
+        <svg viewBox="0 0 24 24">
+
+          <path
+            d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2">
+          </path>
+
+          <circle
+            cx="12"
+            cy="7"
+            r="4">
+          </circle>
+
+          <path d="M19 8v6"></path>
+
+          <path d="M16 11h6"></path>
+
+        </svg>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FORMULARIO
+    ====================================================== -->
+    <form
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+      class="vendedor-form"
+    >
+
+
+      <!-- =================================================
+           INFORMACIÓN PERSONAL
+      ================================================== -->
+      <section class="form-section">
+
+        <div class="section-heading">
+
+          <div class="section-number">
+            01
+          </div>
+
+          <div>
+
+            <h2>
+              Información personal
+            </h2>
+
+            <p>
+              Datos principales del colaborador.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+
+          <!-- CÉDULA -->
+          <div class="form-group">
+
+            <label for="cedula">
+              Cédula
+            </label>
+
+            <div class="input-container">
+
+              <svg
+                class="field-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+
+                <rect
+                  x="3"
+                  y="5"
+                  width="18"
+                  height="14"
+                  rx="2">
+                </rect>
+
+                <path
+                  d="M7 9h4M7 13h3M15 10h2M15 14h2">
+                </path>
+
+              </svg>
+
+              <input
+                id="cedula"
+                type="text"
+                formControlName="cedula"
+                placeholder="ej. 1712345678"
+                maxlength="10"
+              />
+
+            </div>
+
+          </div>
+
+
+          <!-- NOMBRES -->
+          <div class="form-group">
+
+            <label for="nombres_completos">
+              Nombres completos
+            </label>
+
+            <div class="input-container">
+
+              <svg
+                class="field-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+
+                <path
+                  d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2">
+                </path>
+
+                <circle
+                  cx="12"
+                  cy="7"
+                  r="4">
+                </circle>
+
+              </svg>
+
+              <input
+                id="nombres_completos"
+                type="text"
+                formControlName="nombres_completos"
+                placeholder="ej. Juan Gabriel García López"
+              />
+
+            </div>
+
+          </div>
+
+
+          <!-- FECHA DE NACIMIENTO -->
+          <div class="form-group">
+
+            <label for="fecha_nacimiento">
+              Fecha de nacimiento
+            </label>
+
+            <div class="input-container">
+
+              <svg
+                class="field-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+
+                <rect
+                  x="3"
+                  y="5"
+                  width="18"
+                  height="16"
+                  rx="2">
+                </rect>
+
+                <path
+                  d="M16 3v4M8 3v4M3 10h18">
+                </path>
+
+              </svg>
+
+              <input
+                id="fecha_nacimiento"
+                type="date"
+                formControlName="fecha_nacimiento"
+              />
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           INFORMACIÓN LABORAL
+      ================================================== -->
+      <section class="form-section">
+
+        <div class="section-heading">
+
+          <div class="section-number">
+            02
+          </div>
+
+          <div>
+
+            <h2>
+              Información laboral
+            </h2>
+
+            <p>
+              Configura las condiciones del colaborador.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+
+          <!-- FECHA DE INGRESO -->
+          <div class="form-group">
+
+            <label for="fecha_ingreso">
+              Fecha de ingreso
+            </label>
+
+            <div class="input-container">
+
+              <svg
+                class="field-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+
+                <rect
+                  x="3"
+                  y="5"
+                  width="18"
+                  height="16"
+                  rx="2">
+                </rect>
+
+                <path
+                  d="M16 3v4M8 3v4M3 10h18">
+                </path>
+
+              </svg>
+
+              <input
+                id="fecha_ingreso"
+                type="date"
+                formControlName="fecha_ingreso"
+              />
+
+            </div>
+
+          </div>
+
+
+          <!-- TIPO DE CONTRATO -->
+          <div class="form-group">
+
+            <label for="tipo_contrato">
+              Tipo de contrato
+            </label>
+
+            <div class="input-container select-container">
+
+              <svg
+                class="field-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+
+                <rect
+                  x="4"
+                  y="3"
+                  width="16"
+                  height="18"
+                  rx="2">
+                </rect>
+
+                <path
+                  d="M8 8h8M8 12h8M8 16h5">
+                </path>
+
+              </svg>
+
+              <select
+                id="tipo_contrato"
+                formControlName="tipo_contrato"
+              >
+
+                <option
+                  value=""
+                  disabled
+                  selected
+                >
+                  Selecciona una opción
+                </option>
+
+                <option value="tiempo_indefinido">
+                  Tiempo Indefinido
+                </option>
+
+                <option value="plazo_fijo">
+                  Plazo Fijo
+                </option>
+
+                <option value="temporal">
+                  Temporal
+                </option>
+
+                <option value="practicas">
+                  Prácticas
+                </option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+
+          <!-- SALARIO -->
+          <div class="form-group">
+
+            <label for="salario">
+              Salario (USD)
+            </label>
+
+            <div class="input-container">
+
+              <span class="currency-symbol">
+                $
+              </span>
+
+              <input
+                id="salario"
+                class="currency-input"
+                type="number"
+                formControlName="salario"
+                step="0.01"
+                min="0"
+                placeholder="ej. 1200.00"
+              />
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           CREDENCIALES
+      ================================================== -->
+      <section class="form-section credentials-section">
+
+        <div class="section-heading">
+
+          <div class="section-number">
+            03
+          </div>
+
+          <div>
+
+            <h2>
+              Credenciales de acceso
+            </h2>
+
+            <p>
+              Define el usuario y contraseña del vendedor.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-grid credentials-grid">
+
+
+          <!-- USUARIO -->
+          <div class="form-group">
+
+            <label for="usuario_creado">
+              Usuario
+            </label>
+
+            <div class="input-container">
+
+              <svg
+                class="field-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+
+                <path
+                  d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2">
+                </path>
+
+                <circle
+                  cx="12"
+                  cy="7"
+                  r="4">
+                </circle>
+
+              </svg>
+
+              <input
+                id="usuario_creado"
+                type="text"
+                formControlName="usuario_creado"
+                placeholder="ej. jgarcia123"
+              />
+
+            </div>
+
+          </div>
+
+
+          <!-- CONTRASEÑA -->
+          <div class="form-group">
+
+            <label for="contraseña_creada">
+              Contraseña
+            </label>
+
+            <div class="input-container">
+
+              <svg
+                class="field-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+
+                <rect
+                  x="3"
+                  y="11"
+                  width="18"
+                  height="10"
+                  rx="2">
+                </rect>
+
+                <path
+                  d="M7 11V7a5 5 0 0 1 10 0v4">
+                </path>
+
+              </svg>
+
+              <input
+                id="contraseña_creada"
+                type="password"
+                formControlName="contraseña_creada"
+                placeholder="Ingresa una contraseña"
+              />
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           MENSAJE
+      ================================================== -->
+      @if (mensaje) {
+
+      <div
+        class="status-message"
+        [class.error]="huboError"
+        [class.exito]="!huboError"
+      >
+
+        <div class="status-icon">
+
+          @if (huboError) {
+          !
+          } @else {
+          ✓
+          }
+
+        </div>
+
+        <span>
+          {{ mensaje }}
+        </span>
+
+      </div>
+
+      }
+
+
+      <!-- =================================================
+           ACCIONES
+      ================================================== -->
+      <div class="form-actions">
+
+        <div class="core-brand-logo-box">
+
+          <img
+            src="assets/img/logo_sin _fondo.png"
+            alt="Core Digital"
+            class="core-brand-logo-img"
+          />
+
+        </div>
+
+
+        <button
+          type="submit"
+          [disabled]="isLoading"
+          class="btn-submit"
+        >
+
+          @if (isLoading) {
+
+          <span class="spinner"></span>
+
+          Guardando...
+
+          } @else {
+
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+
+            <path
+              d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z">
+            </path>
+
+            <path
+              d="M17 21v-8H7v8M7 3v5h8">
+            </path>
+
+          </svg>
+
+          Guardar registro
+
+          }
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
 </div>
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+<app-footer></app-footer>

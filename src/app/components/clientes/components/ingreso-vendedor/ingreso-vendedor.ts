@@ -5,12 +5,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 import { CoreVendedor, RegistroVendedorPayload } from '../../../../services/core-vendedor';
 import { AuthService } from '../../../../services/auth';
+import { Footer } from "../../../footer/footer";
+import { NavBar } from "../../../nav-bar/nav-bar";
  // ajusta el path real
 
 @Component({
   selector: 'app-ingreso-vendedor',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, Footer, NavBar],
   templateUrl: './ingreso-vendedor.html',
   styleUrl: './ingreso-vendedor.css',
 })

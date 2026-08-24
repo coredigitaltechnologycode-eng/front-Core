@@ -1,253 +1,1172 @@
+:host {
+    display: block;
+
+    width: 100%;
+    min-height: 100vh;
+
+    font-family:
+        "Segoe UI",
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        sans-serif;
+
+    color: #16233A;
+
+    background: #F3ECE3;
+}
+
+
 * {
     box-sizing: border-box;
 }
 
-.home-container {
-    min-height: 100vh;
-    padding: 35px 45px;
-    background: #f5f7fb;
-    font-family: Arial, Helvetica, sans-serif;
+
+/* =====================================================
+   PÁGINA
+====================================================== */
+
+.home-page {
+    position: relative;
+
+    width: 100%;
+
+    min-height: calc(100vh - 120px);
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 100% 100%,
+            rgba(62, 130, 196, 0.38),
+            transparent 45%
+        ),
+        radial-gradient(
+            circle at 0% 0%,
+            rgba(217, 138, 78, 0.48),
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            #E8EFF7 0%,
+            #F3ECE3 100%
+        );
 }
 
 
-/* =========================================
+/* =====================================================
+   CONTENEDOR GENERAL
+====================================================== */
+
+.home-container {
+    position: relative;
+
+    width: min(1250px, 100%);
+
+    min-height: 100%;
+
+    margin: 0 auto;
+
+    padding:
+        42px 32px 60px;
+}
+
+
+/* =====================================================
    HEADER
-========================================= */
+====================================================== */
 
 .header {
-    background: white;
-    border-radius: 18px;
-    padding: 28px 32px;
+    position: relative;
+
+    width: 100%;
+
+    min-height: 180px;
+
+    margin-bottom: 34px;
+
+    padding:
+        38px 42px;
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
-    margin-bottom: 30px;
 
-    border: 1px solid #e7eaf0;
+    gap: 30px;
 
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+
+    border:
+        1px solid rgba(11, 42, 79, 0.12);
+
+    border-radius: 22px;
+
+    color: #FFFFFF;
+
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(62, 130, 196, 0.28),
+            transparent 36%
+        ),
+        radial-gradient(
+            circle at 0% 100%,
+            rgba(217, 138, 78, 0.16),
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            #0B2A4F,
+            #1B4F8C
+        );
+
+    box-shadow:
+        0 20px 50px rgba(15, 30, 60, 0.16),
+        0 5px 15px rgba(15, 30, 60, 0.06);
 }
+
+
+/* =====================================================
+   DECORACIÓN HEADER
+====================================================== */
+
+.header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    top: -210px;
+    right: -100px;
+
+    border:
+        55px solid rgba(255, 255, 255, 0.055);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    left: -125px;
+    bottom: -160px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(217, 138, 78, 0.10);
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   CONTENIDO HEADER
+====================================================== */
+
+.header-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 720px;
+}
+
+
+.header-kicker {
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    color: #E6A06C;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+
+    text-transform: uppercase;
+}
+
 
 .header h1 {
-    margin: 0 0 8px 0;
-    font-size: 28px;
-    font-weight: 700;
-    color: #1e293b;
+    margin:
+        0 0 11px;
+
+    color: #FFFFFF;
+
+    font-size:
+        clamp(
+            27px,
+            3vw,
+            36px
+        );
+
+    font-weight: 800;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.035em;
 }
+
 
 .header p {
+    max-width: 650px;
+
     margin: 0;
-    color: #64748b;
-    font-size: 15px;
+
+    color:
+        rgba(255, 255, 255, 0.72);
+
+    font-size: 14px;
+
+    line-height: 1.65;
 }
 
-.header-icon {
-    width: 60px;
-    height: 60px;
+
+/* =====================================================
+   BLOQUE CORE DIGITAL
+====================================================== */
+
+.header-brand {
+    position: relative;
+
+    z-index: 2;
+
+    flex-shrink: 0;
 
     display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    min-width: 255px;
+
+    padding:
+        11px 17px 11px 11px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.14);
+
+    border-radius: 18px;
+
+    background:
+        rgba(255, 255, 255, 0.075);
+
+    box-shadow:
+        0 14px 32px rgba(4, 20, 40, 0.18);
+
+    backdrop-filter:
+        blur(8px);
+
+    transition:
+        transform 180ms ease,
+        background 180ms ease,
+        box-shadow 180ms ease;
+}
+
+
+.header-brand:hover {
+    transform:
+        translateY(-2px);
+
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    box-shadow:
+        0 18px 38px rgba(4, 20, 40, 0.22);
+}
+
+
+/* =====================================================
+   CONTENEDOR DEL LOGO
+====================================================== */
+
+.header-logo-wrapper {
+    width: 76px;
+    height: 60px;
+
+    flex:
+        0 0 76px;
+
+    display: flex;
+
     align-items: center;
     justify-content: center;
 
-    border-radius: 15px;
-    background: #eef2ff;
+    padding: 5px;
 
-    font-size: 28px;
-}
+    border-radius: 14px;
 
+    /*
+       Fondo claro porque el logo del login
+       está pensado para mostrarse completo.
+    */
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.98),
+            rgba(247, 250, 253, 0.95)
+        );
 
-/* =========================================
-   GRID DE MÓDULOS
-========================================= */
-
-.modulos {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 22px;
-}
-
-
-/* =========================================
-   MÓDULO
-========================================= */
-
-.modulo {
-    position: relative;
-
-    background: white;
-
-    border: 1px solid #e7eaf0;
-
-    border-radius: 18px;
-
-    padding: 25px;
-
-    min-height: 210px;
-
-    cursor: pointer;
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
+    box-shadow:
+        0 9px 22px rgba(2, 14, 33, 0.20);
 
     overflow: hidden;
 }
 
 
-/* EFECTO HOVER */
+/* =====================================================
+   LOGO CORE DIGITAL
+====================================================== */
 
-.modulo:hover {
-    transform: translateY(-5px);
+.header-logo {
+    display: block;
 
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.09);
+    width: 100%;
+    height: 100%;
 
-    border-color: #cbd5e1;
+    object-fit: contain;
 }
 
 
-/* =========================================
-   ICONO
-========================================= */
+/* =====================================================
+   INFORMACIÓN DE MARCA
+====================================================== */
 
-.icon-container {
-    width: 58px;
-    height: 58px;
-
-    border-radius: 15px;
-
+.header-brand-info {
     display: flex;
-    align-items: center;
-    justify-content: center;
 
-    font-size: 26px;
+    flex-direction: column;
 
-    margin-bottom: 22px;
+    gap: 4px;
 }
 
 
-/* COLORES DE ICONOS */
-
-.icon-container.clientes {
-    background: #e0f2fe;
-}
-
-.icon-container.historial {
-    background: #fef3c7;
-}
-
-.icon-container.pagos {
-    background: #dcfce7;
-}
-
-.icon-container.reportes {
-    background: #ede9fe;
-}
-
-.icon-container.configuracion {
-    background: #f1f5f9;
-}
-
-.icon-container.perfil {
-    background: #fce7f3;
-}
-
-
-/* =========================================
-   INFORMACIÓN
-========================================= */
-
-.modulo-info h2 {
-    margin: 0 0 9px 0;
-
-    font-size: 19px;
-
-    font-weight: 700;
-
-    color: #1e293b;
-}
-
-.modulo-info p {
-    margin: 0;
-
-    color: #64748b;
+.header-brand-info strong {
+    color: #FFFFFF;
 
     font-size: 14px;
 
-    line-height: 1.6;
+    font-weight: 800;
 
-    max-width: 90%;
+    line-height: 1.2;
 }
 
 
-/* =========================================
+.header-brand-info span {
+    color:
+        rgba(255, 255, 255, 0.58);
+
+    font-size: 9.5px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+}
+
+
+/* =====================================================
+   CONTENEDOR DECORATIVO DE MÓDULOS
+====================================================== */
+
+.modulos-wrapper {
+    position: relative;
+
+    padding:
+        29px 29px 31px;
+
+    border-radius: 26px;
+}
+
+
+/* =====================================================
+   ESQUINA SUPERIOR IZQUIERDA
+====================================================== */
+
+.modulos-wrapper::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 115px;
+    height: 115px;
+
+    border-top:
+        4px solid rgba(62, 130, 196, 0.72);
+
+    border-left:
+        4px solid rgba(62, 130, 196, 0.72);
+
+    border-radius:
+        24px 0 0 0;
+
+    filter:
+        drop-shadow(
+            0 3px 7px
+            rgba(62, 130, 196, 0.20)
+        );
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   ESQUINA INFERIOR DERECHA
+====================================================== */
+
+.modulos-wrapper::after {
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+    bottom: 0;
+
+    width: 115px;
+    height: 115px;
+
+    border-right:
+        4px solid rgba(217, 138, 78, 0.72);
+
+    border-bottom:
+        4px solid rgba(217, 138, 78, 0.72);
+
+    border-radius:
+        0 0 24px 0;
+
+    filter:
+        drop-shadow(
+            0 3px 7px
+            rgba(217, 138, 78, 0.20)
+        );
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   CABECERA DE MÓDULOS
+====================================================== */
+
+.section-header {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin:
+        0 2px 20px;
+}
+
+
+.section-kicker {
+    display: inline-block;
+
+    margin-bottom: 4px;
+
+    color: #D98A4E;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.13em;
+
+    text-transform: uppercase;
+}
+
+
+.section-header h2 {
+    position: relative;
+
+    margin: 0;
+
+    color: #0B2A4F;
+
+    font-size: 22px;
+
+    font-weight: 800;
+
+    letter-spacing: -0.025em;
+}
+
+
+.section-header h2::after {
+    content: "";
+
+    display: block;
+
+    width: 42px;
+    height: 3px;
+
+    margin-top: 7px;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #D98A4E,
+            #E6A06C
+        );
+}
+
+
+.section-header > p {
+    margin:
+        0 0 3px;
+
+    color: #78859A;
+
+    font-size: 12.5px;
+}
+
+
+/* =====================================================
+   GRID DE MÓDULOS
+====================================================== */
+
+.modulos {
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: 22px;
+}
+
+
+/* =====================================================
+   TARJETAS
+====================================================== */
+
+.modulo {
+    position: relative;
+
+    min-height: 220px;
+
+    padding:
+        26px 25px 24px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(11, 42, 79, 0.10);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.98),
+            rgba(252, 253, 254, 0.98)
+        );
+
+    box-shadow:
+        0 10px 28px rgba(15, 30, 60, 0.075);
+
+    cursor: pointer;
+
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease,
+        background 180ms ease;
+}
+
+
+/* =====================================================
+   LÍNEA SUPERIOR DE TARJETA
+====================================================== */
+
+.modulo::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0B2A4F,
+            #3E82C4,
+            #D98A4E
+        );
+
+    opacity: 0;
+
+    transition:
+        opacity 180ms ease;
+}
+
+
+/* =====================================================
+   FRANJA LATERAL
+====================================================== */
+
+.modulo::after {
+    content: "";
+
+    position: absolute;
+
+    top: 24px;
+    left: 0;
+    bottom: 24px;
+
+    width: 3px;
+
+    border-radius:
+        0 999px 999px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #3E82C4,
+            #D98A4E
+        );
+
+    opacity: 0.55;
+
+    transition:
+        width 180ms ease,
+        opacity 180ms ease;
+}
+
+
+/* =====================================================
+   HOVER TARJETAS
+====================================================== */
+
+.modulo:hover {
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(217, 138, 78, 0.38);
+
+    background: #FFFFFF;
+
+    box-shadow:
+        0 20px 45px rgba(15, 30, 60, 0.14),
+        0 7px 18px rgba(217, 138, 78, 0.08);
+}
+
+
+.modulo:hover::before {
+    opacity: 1;
+}
+
+
+.modulo:hover::after {
+    width: 4px;
+
+    opacity: 1;
+}
+
+
+/* =====================================================
+   ICONOS
+====================================================== */
+
+.icon-container {
+    width: 60px;
+    height: 60px;
+
+    margin-bottom: 22px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(11, 42, 79, 0.06);
+
+    border-radius: 17px;
+
+    font-size: 27px;
+
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease;
+}
+
+
+.modulo:hover .icon-container {
+    transform:
+        translateY(-2px)
+        scale(1.04);
+
+    box-shadow:
+        0 9px 20px rgba(15, 30, 60, 0.08);
+}
+
+
+/* =====================================================
+   COLORES DE ICONOS
+====================================================== */
+
+.icon-container.clientes {
+    background:
+        linear-gradient(
+            145deg,
+            #E7F1FB,
+            #F3F8FD
+        );
+}
+
+
+.icon-container.historial {
+    background:
+        linear-gradient(
+            145deg,
+            #FFF1DE,
+            #FFF8ED
+        );
+}
+
+
+.icon-container.pagos {
+    background:
+        linear-gradient(
+            145deg,
+            #E8F7F0,
+            #F3FBF7
+        );
+}
+
+
+.icon-container.reportes {
+    background:
+        linear-gradient(
+            145deg,
+            #EEF0FF,
+            #F6F6FF
+        );
+}
+
+
+.icon-container.configuracion {
+    background:
+        linear-gradient(
+            145deg,
+            #EEF3F8,
+            #F7F9FB
+        );
+}
+
+
+.icon-container.perfil {
+    background:
+        linear-gradient(
+            145deg,
+            #FFF1F4,
+            #FFF8F9
+        );
+}
+
+
+/* =====================================================
+   INFORMACIÓN DE LAS TARJETAS
+====================================================== */
+
+.modulo-info {
+    padding-right: 35px;
+}
+
+
+.modulo-info h2 {
+    margin:
+        0 0 9px;
+
+    color: #0B2A4F;
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    line-height: 1.3;
+
+    letter-spacing: -0.018em;
+
+    transition:
+        color 180ms ease;
+}
+
+
+.modulo:hover .modulo-info h2 {
+    color: #123D70;
+}
+
+
+.modulo-info p {
+    max-width: 95%;
+
+    margin: 0;
+
+    color: #72829A;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+}
+
+
+/* =====================================================
    FLECHA
-========================================= */
+====================================================== */
 
 .flecha {
     position: absolute;
 
     right: 22px;
-    bottom: 20px;
+    bottom: 21px;
 
-    width: 35px;
-    height: 35px;
-
-    border-radius: 50%;
-
-    background: #f1f5f9;
+    width: 39px;
+    height: 39px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    color: #475569;
+    border:
+        1px solid rgba(217, 138, 78, 0.12);
 
-    font-size: 18px;
+    border-radius: 12px;
 
-    transition: all 0.25s ease;
+    color: #D98A4E;
+
+    background: #FFF5EC;
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+    transition:
+        transform 180ms ease,
+        background 180ms ease,
+        color 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease;
 }
+
+
+/* =====================================================
+   HOVER FLECHA NARANJA
+====================================================== */
 
 .modulo:hover .flecha {
-    background: #1e293b;
+    transform:
+        translateX(4px);
 
-    color: white;
+    color: #FFFFFF;
 
-    transform: translateX(4px);
+    border-color: transparent;
+
+    background:
+        linear-gradient(
+            135deg,
+            #D98A4E,
+            #E6A06C
+        );
+
+    box-shadow:
+        0 9px 20px rgba(217, 138, 78, 0.30);
 }
 
 
-/* =========================================
-   RESPONSIVE
-========================================= */
+/* =====================================================
+   CLIC
+====================================================== */
+
+.modulo:active {
+    transform:
+        translateY(-2px)
+        scale(0.995);
+}
+
+
+/* =====================================================
+   ACCESIBILIDAD
+====================================================== */
+
+.modulo:focus-visible {
+    outline:
+        3px solid rgba(217, 138, 78, 0.30);
+
+    outline-offset: 3px;
+}
+
+
+/* =====================================================
+   TABLET GRANDE
+====================================================== */
 
 @media (max-width: 1100px) {
 
+    .home-container {
+        padding:
+            32px 25px 48px;
+    }
+
+
     .modulos {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
     }
 
 }
 
 
-@media (max-width: 700px) {
+/* =====================================================
+   TABLET
+====================================================== */
+
+@media (max-width: 760px) {
 
     .home-container {
-        padding: 20px;
+        padding:
+            24px 18px 40px;
     }
+
 
     .header {
-        padding: 22px;
+        min-height: auto;
+
+        padding:
+            30px 27px;
+
+        border-radius: 19px;
     }
 
+
     .header h1 {
-        font-size: 23px;
+        font-size: 25px;
     }
+
+
+    .header p {
+        font-size: 13.5px;
+    }
+
+
+    .header-brand {
+        min-width: auto;
+
+        padding: 9px 11px;
+    }
+
+
+    .header-logo-wrapper {
+        width: 58px;
+        height: 50px;
+
+        flex-basis: 58px;
+    }
+
+
+    .header-brand-info {
+        display: none;
+    }
+
+
+    .modulos-wrapper {
+        padding:
+            24px 20px 26px;
+    }
+
+
+    .modulos-wrapper::before,
+    .modulos-wrapper::after {
+        width: 80px;
+        height: 80px;
+
+        border-width: 3px;
+    }
+
+
+    .section-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 7px;
+    }
+
+
+    .section-header > p {
+        margin: 0;
+    }
+
 
     .modulos {
         grid-template-columns: 1fr;
+    }
+
+
+    .modulo {
+        min-height: 195px;
+    }
+
+}
+
+
+/* =====================================================
+   TELÉFONOS
+====================================================== */
+
+@media (max-width: 520px) {
+
+    .home-container {
+        padding:
+            16px 11px 30px;
+    }
+
+
+    .header {
+        padding:
+            25px 20px;
+
+        align-items: flex-start;
+
+        gap: 15px;
+
+        border-radius: 16px;
+    }
+
+
+    .header-kicker {
+        font-size: 9px;
+    }
+
+
+    .header h1 {
+        font-size: 22px;
+
+        line-height: 1.25;
+    }
+
+
+    .header p {
+        font-size: 13px;
+
+        line-height: 1.55;
+    }
+
+
+    .header-logo-wrapper {
+        width: 52px;
+        height: 44px;
+
+        flex-basis: 52px;
+
+        border-radius: 12px;
+    }
+
+
+    .modulos-wrapper {
+        padding:
+            21px 13px 23px;
+    }
+
+
+    .modulos-wrapper::before,
+    .modulos-wrapper::after {
+        width: 62px;
+        height: 62px;
+    }
+
+
+    .section-header h2 {
+        font-size: 20px;
+    }
+
+
+    .modulos {
+        gap: 15px;
+    }
+
+
+    .modulo {
+        min-height: 185px;
+
+        padding: 21px;
+    }
+
+
+    .icon-container {
+        width: 54px;
+        height: 54px;
+
+        margin-bottom: 18px;
+
+        border-radius: 15px;
+
+        font-size: 24px;
+    }
+
+
+    .modulo-info h2 {
+        font-size: 17px;
+    }
+
+
+    .modulo-info p {
+        font-size: 13px;
+    }
+
+
+    .flecha {
+        right: 18px;
+        bottom: 18px;
+
+        width: 36px;
+        height: 36px;
     }
 
 }

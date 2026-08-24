@@ -1,115 +1,485 @@
-<div class="login-container">
+<div class="login-page">
+
   <div class="login-card">
 
-    <!-- ============ PANEL DE MARCA ============ -->
-    <div class="brand-section">
+    <!-- =====================================================
+         PANEL IZQUIERDO
+    ====================================================== -->
+    <section
+      class="brand-section"
+      aria-label="Sistema de facturación POS"
+    >
 
-      <div class="brand-top">
-        <div class="logo-container">
-          <div class="Logo-Core-img">
-            <img src="assets/img/logo_sin _fondo.png" alt="Core Digital" class="Logo">
-          </div>
+      <div class="brand-content">
+
+        <!-- =================================================
+             LOGO
+        ================================================== -->
+        <div class="logo-wrapper">
+
+          <img
+            src="assets/img/logo_sin _fondo.png"
+            alt="Core Digital"
+            class="brand-logo"
+          />
+
         </div>
-      </div>
+        <span class="eyebrow">
+            Sistema de facturación POS
+          </span>
+          
 
-      <div class="brand-mid">
-        <h2 class="slogan1">Facturación clara, en cada punto de venta.</h2>
-        <p class="brand-sub">Gestiona ventas, comprobantes e inventario desde un solo sistema.</p>
 
-        <div class="ticket-wrap">
+
+          
+
+
+        <!-- =================================================
+             IMAGEN / COMPROBANTE
+        ================================================== -->
+        <div class="ticket-wrapper">
+
           <div class="ticket">
+
             <div class="ticket-head">
               <span>Comprobante</span>
               <span>#00482</span>
             </div>
-            <div class="ticket-line"><span>Producto A × 2</span><b>$24.00</b></div>
-            <div class="ticket-line"><span>Producto B × 1</span><b>$15.50</b></div>
-            <div class="ticket-line"><span>IVA (15%)</span><b>$5.93</b></div>
-            <div class="ticket-total"><span>Total</span><span>$45.43</span></div>
+
+            <div class="ticket-line">
+              <span>Producto A × 2</span>
+              <b>$24.00</b>
+            </div>
+
+            <div class="ticket-line">
+              <span>Producto B × 1</span>
+              <b>$15.50</b>
+            </div>
+
+            <div class="ticket-line">
+              <span>IVA (15%)</span>
+              <b>$5.93</b>
+            </div>
+
+            <div class="ticket-total">
+              <span>Total</span>
+              <span>$45.43</span>
+            </div>
+
           </div>
-        </div>
-      </div>
 
-      <div class="brand-bottom">
-        <span>© 2026 Core Digital</span>
-        <span>Sistema de Facturación POS</span>
-      </div>
-    </div>
-
-    <!-- ============ PANEL DE FORMULARIO ============ -->
-    <div class="form-section">
-      <div class="form-header">
-        <h1>Bienvenido de nuevo</h1>
-        <p>Inicia sesión para continuar en tu punto de venta</p>
-      </div>
-
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
-
-        <div class="form-group">
-          <label for="username">Usuario</label>
-          <div class="input-wrapper">
-            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke="currentColor">
-              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"/><circle cx="12" cy="8" r="4"/>
-            </svg>
-            <input type="email" id="username" formControlName="username" placeholder="nombre@empresa.com"
-              [class.is-invalid]="isFieldInvalid('username')" />
-          </div>
-          <span class="error-msg" *ngIf="isFieldInvalid('username')">Ingrese un correo electrónico válido</span>
         </div>
 
+
+        <!-- =================================================
+             TEXTO DESPUÉS DE LA IMAGEN
+        ================================================== -->
+        <div class="brand-copy">
+
+          
+
+          <h1>
+            Facturación clara,
+            en cada punto de venta.
+          </h1>
+
+          <p>
+            Gestiona tus ventas, comprobantes e inventario
+            desde un solo sistema, de forma rápida,
+            clara y segura.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- =================================================
+           DECORACIONES
+      ================================================== -->
+      <div
+        class="brand-decoration decoration-one"
+      ></div>
+
+      <div
+        class="brand-decoration decoration-two"
+      ></div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PANEL DERECHO
+    ====================================================== -->
+    <section class="form-section">
+
+      <!-- =================================================
+           CABECERA
+      ================================================== -->
+      <div class="login-header">
+
+        <span class="form-kicker">
+          Acceso seguro
+        </span>
+
+        <h2>
+          Bienvenido de nuevo
+        </h2>
+
+        <p>
+          Inicia sesión para continuar en tu punto de venta.
+        </p>
+
+      </div>
+
+
+      <!-- =================================================
+           FORMULARIO
+      ================================================== -->
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()"
+        class="login-form"
+        novalidate
+      >
+
+        <!-- =================================================
+             USUARIO
+        ================================================== -->
         <div class="form-group">
-          <label for="password">Contraseña</label>
-          <div class="input-wrapper">
-            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke="currentColor">
-              <rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/>
+
+          <label for="username">
+            Usuario
+          </label>
+
+          <div
+            class="input-wrapper"
+            [class.is-invalid]="isFieldInvalid('username')"
+          >
+
+            <svg
+              class="input-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+
+              <path
+                d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+              ></path>
+
+              <circle
+                cx="12"
+                cy="7"
+                r="4"
+              ></circle>
+
             </svg>
-            <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password"
-              placeholder="••••••••••••" [class.is-invalid]="isFieldInvalid('password')" />
-            <button type="button" class="toggle-password" (click)="togglePasswordVisibility()">
-              <svg *ngIf="!showPassword" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke="currentColor">
-                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/>
+
+            <input
+              type="email"
+              id="username"
+              formControlName="username"
+              autocomplete="username"
+              placeholder="nombre@empresa.com"
+            />
+
+          </div>
+
+
+          <span
+            class="error-msg"
+            *ngIf="isFieldInvalid('username')"
+          >
+            Ingrese un correo electrónico válido.
+          </span>
+
+        </div>
+
+
+        <!-- =================================================
+             CONTRASEÑA
+        ================================================== -->
+        <div class="form-group">
+
+          <label for="password">
+            Contraseña
+          </label>
+
+          <div
+            class="input-wrapper"
+            [class.is-invalid]="isFieldInvalid('password')"
+          >
+
+            <svg
+              class="input-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+
+              <rect
+                x="3"
+                y="11"
+                width="18"
+                height="10"
+                rx="2"
+              ></rect>
+
+              <path
+                d="M7 11V7a5 5 0 0 1 10 0v4"
+              ></path>
+
+            </svg>
+
+
+            <input
+              id="password"
+              [type]="showPassword ? 'text' : 'password'"
+              formControlName="password"
+              autocomplete="current-password"
+              placeholder="••••••••••••"
+            />
+
+
+            <!-- MOSTRAR / OCULTAR -->
+            <button
+              type="button"
+              class="toggle-password"
+              (click)="togglePasswordVisibility()"
+              [attr.aria-label]="
+                showPassword
+                  ? 'Ocultar contraseña'
+                  : 'Mostrar contraseña'
+              "
+            >
+
+              <!-- OJO ABIERTO -->
+              <svg
+                *ngIf="!showPassword"
+                viewBox="0 0 24 24"
+              >
+
+                <path
+                  d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                ></path>
+
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="3"
+                ></circle>
+
               </svg>
-              <svg *ngIf="showPassword" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke="currentColor">
-                <path d="M3 3l18 18M10.6 10.6a3 3 0 004.24 4.24M6.5 6.7C3.9 8.3 2 12 2 12s4 7 11 7c1.9 0 3.5-.5 4.9-1.2M9.9 4.2A10.6 10.6 0 0112 4c7 0 11 7 11 7s-.9 1.6-2.5 3.1"/>
+
+
+              <!-- OJO CERRADO -->
+              <svg
+                *ngIf="showPassword"
+                viewBox="0 0 24 24"
+              >
+
+                <path
+                  d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"
+                ></path>
+
+                <path
+                  d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"
+                ></path>
+
+                <line
+                  x1="1"
+                  y1="1"
+                  x2="23"
+                  y2="23"
+                ></line>
+
               </svg>
+
             </button>
+
           </div>
-          <span class="error-msg" *ngIf="isFieldInvalid('password')">La contraseña es requerida</span>
+
+
+          <span
+            class="error-msg"
+            *ngIf="isFieldInvalid('password')"
+          >
+            La contraseña es requerida.
+          </span>
+
         </div>
 
+
+        <!-- =================================================
+             RECORDAR / RECUPERAR
+        ================================================== -->
         <div class="row-between">
-          <label class="remember"><input type="checkbox">Recordarme</label>
-          <a routerLink="/forgot-password" class="link-muted">¿Olvidó su contraseña?</a>
+
+          <label class="remember">
+
+            <input
+              type="checkbox"
+            />
+
+            <span>
+              Recordarme
+            </span>
+
+          </label>
+
+
+          <a
+            routerLink="/forgot-password"
+            class="link-muted"
+          >
+            ¿Olvidó su contraseña?
+          </a>
+
         </div>
 
-        <button type="submit" class="btn-submit">
-          <span class="btn-text">Iniciar Sesión</span>
-          <div class="pixels">
-            <span></span><span></span><span></span><span></span><span></span><span></span>
-          </div>
+
+        <!-- =================================================
+             BOTÓN
+        ================================================== -->
+        <button
+          type="submit"
+          class="btn-submit"
+        >
+
+          <span class="btn-text">
+            Iniciar Sesión
+          </span>
+
         </button>
 
-        <div class="divider-row">acceso seguro</div>
 
+        <!-- =================================================
+             DIVISOR
+        ================================================== -->
+        <div class="divider-row">
+          acceso seguro
+        </div>
+
+
+        <!-- =================================================
+             REGISTRO
+        ================================================== -->
         <div class="form-footer">
-          ¿No tiene cuenta? <a routerLink="/register" class="link-register">Regístrese</a>
+
+          ¿No tiene cuenta?
+
+          <a
+            routerLink="/register"
+            class="link-register"
+          >
+            Regístrese
+          </a>
+
         </div>
 
       </form>
-    </div>
+
+    </section>
 
   </div>
+
 </div>
 
-<!-- ============ MODAL DE RESULTADO ============ -->
-<div class="modal-overlay" *ngIf="mostrarModal" (click)="cerrarModal()">
-  <div class="modal-box" [class.modal-exito]="modalExito" [class.modal-error]="!modalExito" (click)="$event.stopPropagation()">
+
+<!-- =========================================================
+     MODAL
+========================================================= -->
+
+<div
+  class="modal-overlay"
+  *ngIf="mostrarModal"
+  (click)="cerrarModal()"
+>
+
+  <div
+    class="modal-box"
+    [class.modal-exito]="modalExito"
+    [class.modal-error]="!modalExito"
+    role="dialog"
+    aria-modal="true"
+    (click)="$event.stopPropagation()"
+  >
+
+    <!-- ICONO -->
     <div class="modal-icon">
-      <svg *ngIf="modalExito" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor"><path d="M20 6L9 17l-5-5"/></svg>
-      <svg *ngIf="!modalExito" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+
+      <!-- ÉXITO -->
+      <svg
+        *ngIf="modalExito"
+        viewBox="0 0 24 24"
+      >
+
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        ></circle>
+
+        <path
+          d="m8 12 3 3 5-6"
+        ></path>
+
+      </svg>
+
+
+      <!-- ERROR -->
+      <svg
+        *ngIf="!modalExito"
+        viewBox="0 0 24 24"
+      >
+
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        ></circle>
+
+        <path
+          d="M12 7v6"
+        ></path>
+
+        <circle
+          cx="12"
+          cy="17"
+          r=".5"
+        ></circle>
+
+      </svg>
+
     </div>
-    <h3 class="modal-titulo">{{ modalExito ? '¡Login exitoso!' : 'Error al iniciar sesión' }}</h3>
-    <p class="modal-mensaje">{{ modalMensaje }}</p>
-    <button type="button" class="modal-btn" (click)="cerrarModal()">Aceptar</button>
+
+
+    <!-- TÍTULO -->
+    <h3 class="modal-titulo">
+
+      {{
+        modalExito
+          ? '¡Login exitoso!'
+          : 'Error al iniciar sesión'
+      }}
+
+    </h3>
+
+
+    <!-- MENSAJE -->
+    <p class="modal-mensaje">
+      {{ modalMensaje }}
+    </p>
+
+
+    <!-- BOTÓN -->
+    <button
+      type="button"
+      class="modal-btn"
+      (click)="cerrarModal()"
+    >
+      Aceptar
+    </button>
+
   </div>
+
 </div>
