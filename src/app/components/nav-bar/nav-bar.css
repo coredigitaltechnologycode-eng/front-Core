@@ -1,296 +1,705 @@
-/*=========================================
-    BARRA DE NAVEGACIÓN COMPLETA
-=========================================*/
+/* =========================================================
+   NAVBAR - CORE DIGITAL
+   Azul elegante + detalles del Footer
+========================================================= */
 
+.navbar {
+  position: relative;
+  z-index: 10;
 
-/*=========================================
-    CONTENEDOR PRINCIPAL NAVBAR
-=========================================*/
+  min-height: 76px;
 
-.navbar{
-    height:75px;
+  padding: 12px 35px;
 
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    padding:0 35px;
+  gap: 25px;
 
-    background:linear-gradient(
-        90deg,
-        #0B3D91 0%,
-        #1565C0 55%,
-        #1E88E5 100%
+  background:
+    linear-gradient(
+      135deg,
+      #0B2A4F 0%,
+      #123D69 55%,
+      #185487 100%
     );
 
-    box-shadow:0 8px 25px rgba(0,0,0,.15);
+  box-shadow:
+    0 10px 30px
+    rgba(11, 42, 79, 0.22);
+
+  box-sizing: border-box;
 }
 
 
-/*=========================================
-    LOGO (IZQUIERDA)
-=========================================*/
+/* =========================================================
+   LÍNEA DECORATIVA INFERIOR
+========================================================= */
 
-.navbar-logo{
+.navbar::after {
 
-    display:flex;
-    align-items:center;
-    gap:5px;
+  content: "";
 
-}
+  position: absolute;
 
+  left: 0;
+  bottom: 0;
 
-/* Imagen del logo */
+  width: 100%;
+  height: 3px;
 
-.navbar-logo img{
-
-    width:200px;
-    height:auto;
-
-}
-
-
-/*=========================================
-    TEXTO DEL LOGO
-=========================================*/
-
-
-
-.logo-text h2{
-
-    margin:0;
-
-    color:white;
-
-    font-size:22px;
-
-    font-weight:700;
-
-}
-
-.logo-text span{
-
-    color:#d6e8ff;
-
-    font-size:12px;
-
-}
-
-
-/*=========================================
-    MENÚ CENTRAL
-=========================================*/
-
-.navbar-menu{
-
-    list-style:none;
-
-    display:flex;
-
-    gap:18px;
-
-    margin:0;
-
-    padding:0;
-
-}
-
-
-/*=========================================
-    OPCIONES DEL MENÚ
-=========================================*/
-
-.navbar-menu li{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    padding:12px 18px;
-
-    border-radius:12px;
-
-    color:white;
-
-    cursor:pointer;
-
-    transition:.35s;
-
-}
-
-
-/* Hover */
-
-.navbar-menu li:hover{
-
-    background:rgba(255,255,255,.12);
-
-}
-
-
-/* Opción activa */
-
-.navbar-menu .active{
-
-    background:linear-gradient(
-        90deg,
-        #FB8500,
-        #FFB703
+  background:
+    linear-gradient(
+      90deg,
+      #0B2A4F 0%,
+      #3E82C4 50%,
+      #D98A4E 100%
     );
 
-    box-shadow:0 5px 15px rgba(251,133,0,.35);
-
 }
 
 
-/*=========================================
-    ICONOS DEL MENÚ
-=========================================*/
+/* =========================================================
+   BRILLO SUPERIOR SUTIL
+========================================================= */
 
-.navbar-menu i{
+.navbar::before {
 
-    font-size:16px;
+  content: "";
 
-}
+  position: absolute;
 
+  top: 0;
+  left: 0;
 
-/*=========================================
-    CONTENEDOR USUARIO
-=========================================*/
+  width: 100%;
+  height: 1px;
 
-.navbar-user{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:15px;
-
-}
-
-
-/*=========================================
-    BOTONES DE ICONOS
-=========================================*/
-
-.icon-btn{
-
-    width:42px;
-
-    height:42px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.15);
-
-    color:white;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-}
-
-
-.icon-btn:hover{
-
-    background:#FB8500;
-
-    transform:translateY(-2px);
-
-}
-
-
-/*=========================================
-    PERFIL USUARIO
-=========================================*/
-
-.user-profile{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    background:white;
-
-    padding:8px 16px;
-
-    border-radius:40px;
-
-    box-shadow:0 5px 15px rgba(0,0,0,.12);
-
-}
-
-
-/*=========================================
-    FOTO DEL USUARIO
-=========================================*/
-
-.user-profile img{
-
-    width:42px;
-
-    height:42px;
-
-    border-radius:50%;
-
-    object-fit:cover;
-
-}
-
-
-/*=========================================
-    TEXTO USUARIO
-=========================================*/
-
-.user-profile strong{
-
-    display:block;
-
-    color:#0B3D91;
-
-    font-size:14px;
-
-}
-
-.user-profile small{
-
-    color:#666;
-
-    font-size:12px;
-
-}
-
-
-/*=========================================
-    EFECTO GENERAL NAVBAR
-=========================================*/
-
-.navbar::after{
-
-    content:"";
-
-    position:absolute;
-
-    left:0;
-
-    bottom:0;
-
-    width:100%;
-
-    height:2px;
-
-    background:linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,.35),
-        transparent
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.25),
+      transparent
     );
+
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.navbar-logo {
+
+  display: flex;
+
+  align-items: center;
+  justify-content: flex-start;
+
+  flex-shrink: 0;
+}
+
+
+.navbar-logo img {
+
+  display: block;
+
+  width: auto;
+  height: 48px;
+
+  max-width: 220px;
+
+  object-fit: contain;
+
+  transition:
+    transform 180ms ease,
+    filter 180ms ease;
+}
+
+
+.navbar-logo img:hover {
+
+  transform:
+    translateY(-1px);
+
+  filter:
+    drop-shadow(
+      0 5px 12px
+      rgba(255,255,255,.12)
+    );
+}
+
+
+/* =========================================================
+   MENÚ CENTRAL
+========================================================= */
+
+.navbar-menu {
+
+  list-style: none;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  margin: 0;
+  padding: 0;
+}
+
+
+/* =========================================================
+   OPCIONES
+========================================================= */
+
+.navbar-menu li {
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 10px 15px;
+
+  border-radius: 11px;
+
+  color:
+    rgba(255,255,255,.76);
+
+  cursor: pointer;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+
+/* =========================================================
+   ICONOS
+========================================================= */
+
+.navbar-menu li i {
+
+  font-size: 14px;
+
+  opacity: .9;
+
+  transition:
+    transform 180ms ease,
+    color 180ms ease;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.navbar-menu li:hover {
+
+  color: #FFFFFF;
+
+  background:
+    rgba(255,255,255,.09);
+
+  transform:
+    translateY(-1px);
+}
+
+
+.navbar-menu li:hover i {
+
+  transform:
+    scale(1.08);
+
+  color: #D98A4E;
+}
+
+
+/* =========================================================
+   OPCIÓN ACTIVA
+========================================================= */
+
+.navbar-menu .active {
+
+  color: #FFFFFF;
+
+  background:
+    linear-gradient(
+      135deg,
+      #D98A4E,
+      #E3A06F
+    );
+
+  box-shadow:
+    0 7px 18px
+    rgba(217,138,78,.28);
+}
+
+
+.navbar-menu .active i {
+
+  color: #FFFFFF;
+}
+
+
+/* =========================================================
+   HOVER ACTIVO
+========================================================= */
+
+.navbar-menu .active:hover {
+
+  color: #FFFFFF;
+
+  background:
+    linear-gradient(
+      135deg,
+      #D98A4E,
+      #E7AA79
+    );
+
+  box-shadow:
+    0 10px 22px
+    rgba(217,138,78,.34);
+
+  transform:
+    translateY(-2px);
+}
+
+
+/* =========================================================
+   CONTENEDOR USUARIO
+========================================================= */
+
+.navbar-user {
+
+  display: flex;
+
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   BOTONES DE ICONOS
+========================================================= */
+
+.icon-btn {
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid
+    rgba(255,255,255,.12);
+
+  border-radius: 50%;
+
+  color: #FFFFFF;
+
+  background:
+    rgba(255,255,255,.08);
+
+  cursor: pointer;
+
+  font: inherit;
+
+  transition:
+    background 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+
+.icon-btn i {
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   HOVER BOTONES
+========================================================= */
+
+.icon-btn:hover {
+
+  background:
+    linear-gradient(
+      135deg,
+      #D98A4E,
+      #E3A06F
+    );
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 7px 17px
+    rgba(217,138,78,.28);
+}
+
+
+/* =========================================================
+   PERFIL
+========================================================= */
+
+.user-profile {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  min-height: 48px;
+
+  padding:
+    5px 14px 5px 6px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.12);
+
+  border-radius: 50px;
+
+  background:
+    rgba(255,255,255,.97);
+
+  box-shadow:
+    0 8px 20px
+    rgba(0,0,0,.16);
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+
+.user-profile:hover {
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 11px 25px
+    rgba(0,0,0,.22);
+}
+
+
+/* =========================================================
+   AVATAR
+========================================================= */
+
+.user-profile img {
+
+  width: 38px;
+  height: 38px;
+
+  flex: 0 0 38px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   INFORMACIÓN USUARIO
+========================================================= */
+
+.user-info {
+
+  display: flex;
+
+  flex-direction: column;
+
+  min-width: 75px;
+}
+
+
+.user-profile strong {
+
+  display: block;
+
+  color: #0B2A4F;
+
+  font-size: 12.5px;
+
+  font-weight: 800;
+
+  line-height: 1.3;
+}
+
+
+.user-profile small {
+
+  display: block;
+
+  margin-top: 2px;
+
+  color: #69768A;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  line-height: 1.3;
+}
+
+
+/* =========================================================
+   RESPONSIVE - 1100
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .navbar {
+
+    padding:
+      12px 25px;
+  }
+
+
+  .navbar-menu {
+
+    gap: 4px;
+  }
+
+
+  .navbar-menu li {
+
+    padding:
+      9px 11px;
+
+    font-size:
+      11px;
+  }
+
+
+  .navbar-logo img {
+
+    max-width:
+      190px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .navbar {
+
+    min-height:
+      auto;
+
+    flex-wrap:
+      wrap;
+
+    padding:
+      12px 20px;
+  }
+
+
+  .navbar-logo img {
+
+    height:
+      44px;
+  }
+
+
+  .navbar-menu {
+
+    order:
+      3;
+
+    width:
+      100%;
+
+    overflow-x:
+      auto;
+
+    justify-content:
+      flex-start;
+
+    padding:
+      4px 0;
+
+    scrollbar-width:
+      none;
+  }
+
+
+  .navbar-menu::-webkit-scrollbar {
+
+    display:
+      none;
+  }
+
+
+  .navbar-menu li {
+
+    flex-shrink:
+      0;
+  }
+
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .navbar {
+
+    padding:
+      12px 16px;
+
+    gap:
+      10px;
+  }
+
+
+  .navbar-logo img {
+
+    height:
+      40px;
+
+    max-width:
+      170px;
+  }
+
+
+  .navbar-user {
+
+    gap:
+      6px;
+  }
+
+
+  .icon-btn {
+
+    width:
+      36px;
+
+    height:
+      36px;
+  }
+
+
+  .icon-btn i {
+
+    font-size:
+      13px;
+  }
+
+
+  .user-profile {
+
+    padding:
+      4px;
+
+    min-height:
+      auto;
+  }
+
+
+  .user-profile img {
+
+    width:
+      36px;
+
+    height:
+      36px;
+  }
+
+
+  .user-info {
+
+    display:
+      none;
+  }
+
+
+  .navbar-menu {
+
+    gap:
+      5px;
+  }
+
+
+  .navbar-menu li {
+
+    padding:
+      9px 12px;
+
+    font-size:
+      11px;
+  }
+
+
+  .navbar-menu li i {
+
+    font-size:
+      13px;
+  }
+
+}
+
+
+/* =========================================================
+   MÓVIL PEQUEÑO
+========================================================= */
+
+@media (max-width: 400px) {
+
+  .navbar {
+
+    padding:
+      10px 12px;
+  }
+
+
+  .navbar-logo img {
+
+    height:
+      36px;
+
+    max-width:
+      150px;
+  }
+
+
+  .navbar-menu li {
+
+    padding:
+      8px 10px;
+  }
 
 }

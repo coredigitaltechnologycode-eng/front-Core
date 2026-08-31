@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Footer } from "../../footer/footer";
+import { NavBar } from '../../nav-bar/nav-bar';
 
 @Component({
   selector: 'app-home-admin',
-  imports: [],
+  imports: [Footer,NavBar],
   templateUrl: './home-admin.html',
   styleUrl: './home-admin.css',
 })
